@@ -1,0 +1,8 @@
+#pkgDirectories
+node_modules
+jspm_packages
+
+#server directories
+.serverless
+
+config.json
