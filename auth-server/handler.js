@@ -31,9 +31,9 @@ module.exports.getAuthURL = async () => {
 module.exports.getAccessToken = async (event) => {
     const code = decodeURIComponent(`${event.pathParameters.code}`);
 
-    return Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         oAuth2Client.getToken(code, (error, response) => {
-            if (err) {
+            if (error) {
                 return reject(error);
             }
             return resolve(response);
@@ -49,17 +49,51 @@ module.exports.getAccessToken = async (event) => {
                 body: JSON.stringify(results),
             };
         })
-        .catch((err) => {
+        .catch((error) => {
             return {
                 statusCode: 500,
-                body: JSON.stringify(err),
+                body: JSON.stringify(error),
             };
         });
 };
-// //
-// modules.exports.getCalendarEvents = async (event) => {
-//   const access_token = decodeURIComponent(`{event.pathParameters.code}`);
-//   return Promise((resolve, reject) => {})
-//     .then()
-//     .catch((err) => {});
-// };//
+
+module.exports.getCalendarEvents = async (event) => {
+    const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+
+    // set auth credentials
+    oAuth2Client.setCredentials({ access_token })
+    return new Promise((resolve, reject) => {
+        return calendar.events.list(
+            {
+                calendarId: CALENDAR_ID,
+                auth: oAuth2Client,
+                timeMin: new Date().toISOString(),
+                singleEvents: true,
+                orderBy: "startTime",
+            },
+            (error, response) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(response);
+                }
+            }
+        )
+
+    }).then((results) => {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+            },
+            body: JSON.stringify(results.data.items),
+        };
+
+    }).catch((error) => {
+        return {
+            statusCode: 500,
+            body: JSON.stringify(error),
+        };
+    });
+}
