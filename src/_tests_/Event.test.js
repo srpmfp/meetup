@@ -9,7 +9,6 @@ describe('<Event> details', () => {
     let EventComponent;
 
 
-
     beforeEach(async () => {
         const allEvents = await getEvents();
         const data = allEvents[0];
@@ -25,8 +24,7 @@ describe('<Event> details', () => {
     })
 
     test('event details are hidden by default', () => {
-        const details = EventComponent.queryByRole('event');
-        expect(details).not.toBeInTheDocument();
+        expect(EventComponent.queryByRole('event')).not.toBeInTheDocument();
     })
 
 
@@ -46,8 +44,8 @@ describe('<Event> details', () => {
         }) : [];
 
         // Event Title Displayed
-        const eventSummary = details[0].summary;
-        expect(EventComponent.getByText(eventSummary)).toBeInTheDocument;
+        
+        expect(EventComponent.getByText(details[0].summary)).toBeInTheDocument;
 
         // Event Start Time Displayed
         const eventStart = new Date(details[0].start.dateTime).toString();
@@ -58,8 +56,8 @@ describe('<Event> details', () => {
         expect(EventComponent.getByText(eventEnd)).toBeInTheDocument
 
         //Event Location Displayed
-        const eventLocation = details[0].location;
-        expect(EventComponent.getByText(eventLocation)).toBeInTheDocument
+
+        expect(EventComponent.getByText(details[0].location)).toBeInTheDocument
     })
 
     test('event details are hidden when button is clicked again', async () => {
@@ -76,9 +74,8 @@ describe('<Event> details', () => {
         }) : [];
 
 
-
+//Check if button switchest from hide to show
         expect(EventComponent.getByText("Hide Details")).toBeInTheDocument();
-
         await user.click(button);
         expect(EventComponent.getByText("Show Details")).toBeInTheDocument();
 
