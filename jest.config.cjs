@@ -8,4 +8,17 @@ module.exports = {
     },
     moduleFileExtensions: ['js', 'jsx'],
     setupFilesAfterEnv: ['<rootDir>/setupTests.js'], // Path to the setup file
+    collectCoverage: true,
+     collectCoverageFrom: [
+      '**/*.{js,jsx}',
+      '!**/node_modules/**',
+      '!**/vendor/**',
+      '!./auth-server/**',
+      '!./coverage/**',
+'!**/node_modules/**',
+'!**/vendor/**'    ],
+    
+  coverageDirectory: 'coverage',
+coverageReporters: ['json', 'lcov', 'text', 'clover']
+  
 };  

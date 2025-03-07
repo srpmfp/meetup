@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -35,4 +36,5 @@
     "jest-environment-jsdom": "^29.7.0",
     "vite": "^6.1.0"
   }
+   
 }
