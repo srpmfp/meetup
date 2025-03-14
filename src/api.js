@@ -37,6 +37,7 @@ const checkToken = async (accessToken) => {
         `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
     );
     const result = await response.json();
+
     return result;
 };
 export const getEvents = async () => {
@@ -50,7 +51,7 @@ export const getEvents = async () => {
 
     if (token) {
         removeQuery();
-        const url = "https://a1owe4bufi.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" + "/" + token;
+        const url = "https://www.googleapis.com/auth/calendar.events.public.readonly" + "/" + token;
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
