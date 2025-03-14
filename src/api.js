@@ -59,6 +59,23 @@ export const getEvents = async () => {
 
     }
 }
+
+
+const removeQuery = () => {
+    let newurl;
+    if (window.history.pushState && window.location.pathname) {
+        newurl =
+            window.location.protocol +
+            "//" +
+            window.location.host +
+            window.location.pathname;
+        window.history.pushState("", "", newurl);
+    } else {
+        newurl = window.location.protocol + "//" + window.location.host;
+        window.history.pushState("", "", newurl);
+    }
+};
+
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
     const response = await fetch(
