@@ -120,19 +120,20 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">59x</span>
-<span class="cline-any cline-yes">59x</span>
-<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">59x</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">66x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">270x</span>
@@ -141,7 +142,7 @@
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -150,7 +151,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">66x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -158,6 +159,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,39 +179,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react';
 &nbsp;
 const CitySearch = ({ allLocations, setCurrentCity }) =&gt; {
 &nbsp;
-    const [query, setQuery] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
-    const [showSuggestions, setShowSuggestions] = useState(false);
-    
-    useEffect(() =&gt; {
-        setSuggestions(allLocations);
-    }, [`${allLocations}`]);
+  const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 &nbsp;
-    const handleInputChanged = (event) =&gt; {
-        const value = event.target.value;
-        const filteredLocations = allLocations ? allLocations.filter((location) =&gt; {
-            return location.toUpperCase().indexOf(value.toUpperCase()) &gt; -1;
-        }) : <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
-        setQuery(value);
-        setSuggestions(filteredLocations);
-    };
+  useEffect(() =&gt; {
+    setSuggestions(allLocations);
+  }, [`${allLocations}`]);
 &nbsp;
-    const handleItemClicked = (event) =&gt; {
-        const value = event.target.textContent;
-        setQuery(value);
-        setShowSuggestions(false);
-        setCurrentCity(value);
-    };
+  const handleInputChanged = (event) =&gt; {
+    const value = event.target.value;
+    const filteredLocations = allLocations ? allLocations.filter((location) =&gt; {
+      return location.toUpperCase().indexOf(value.toUpperCase()) &gt; -1;
+    }) : <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+    setQuery(value);
+    setSuggestions(filteredLocations);
+  };
 &nbsp;
-   
+  const handleItemClicked = (event) =&gt; {
+    const value = event.target.textContent;
+    setQuery(value);
+    setShowSuggestions(false);
+    setCurrentCity(value);
+  };
 &nbsp;
-    return (
+&nbsp;
+&nbsp;
+  return (
     &lt;div id="city-search"&gt;
       &lt;input
         type="text"
@@ -219,12 +221,13 @@ const CitySearch = ({ allLocations, setCurrentCity }) =&gt; {
       /&gt;
       {showSuggestions ?
         &lt;ul className="suggestions"&gt;
-          {suggestions.map((suggestion) =&gt; {
-            return &lt;li onClick={handleItemClicked} key={suggestion}&gt;{suggestion}&lt;/li&gt;
-          })}
           &lt;li key='See all cities' onClick={handleItemClicked}&gt;
             &lt;b&gt;See all cities&lt;/b&gt;
           &lt;/li&gt;
+          {suggestions.map((suggestion) =&gt; {
+            return &lt;li onClick={handleItemClicked} key={suggestion}&gt;{suggestion}&lt;/li&gt;
+          })}
+&nbsp;
         &lt;/ul&gt;
         : null
       }
@@ -241,7 +244,7 @@ export default CitySearch;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-14T00:38:08.042Z
+                at 2025-03-14T01:46:42.877Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

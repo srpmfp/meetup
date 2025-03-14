@@ -10,8 +10,10 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     setSuggestions(allLocations);
   }, [`${allLocations}`]);
 
+  //filter locations based on user input
   const handleInputChanged = (event) => {
     const value = event.target.value;
+
     const filteredLocations = allLocations ? allLocations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     }) : [];
@@ -21,12 +23,12 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
+
+
     setQuery(value);
     setShowSuggestions(false);
     setCurrentCity(value);
   };
-
-
 
   return (
     <div id="city-search">
@@ -41,7 +43,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
       {showSuggestions ?
         <ul className="suggestions">
           <li key='See all cities' onClick={handleItemClicked}>
-            <b>See all cities</b>
+            <b>See All Cities</b>
           </li>
           {suggestions.map((suggestion) => {
             return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
