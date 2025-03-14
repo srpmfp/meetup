@@ -31,7 +31,7 @@ const App = () => {
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
   }
-  console.log(events.length);
+
   return (
     < div className='App' >
       <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setCurrentNOE={setCurrentNOE} />

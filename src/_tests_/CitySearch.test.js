@@ -112,8 +112,8 @@ describe('city search integration', () => {
         const allLocations = extractLocations(allEvents);
 
         const NOEDom = AppDom.querySelector('#eventCount');
-        await user.type(NOEDom, '{backspace}{backspace}12');
-
+        await user.type(NOEDom, '{backspace}{backspace}13');
+        
 
 
         // Gets the suggestions list
@@ -121,7 +121,8 @@ describe('city search integration', () => {
         const eventListDom = AppDom.querySelector('#event-list');
         const suggestionListItems = within(eventListDom).queryAllByRole('listitem');
 
-        expect(suggestionListItems.length).toBe(allLocations.slice(0, NOEDom.value).length);
+        expect(suggestionListItems.length).toBe(allEvents.slice(0, NOEDom.value).length);
+;
     });
 
 
