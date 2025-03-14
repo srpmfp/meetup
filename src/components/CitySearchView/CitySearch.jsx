@@ -8,7 +8,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
 
   useEffect(() => {
     setSuggestions(allLocations);
-  }, [`${allLocations}`]);
+  }, [`${allLocations}`, setCurrentCity]);
 
   //filter locations based on user input
   const handleInputChanged = (event) => {
@@ -19,6 +19,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     }) : [];
     setQuery(value);
     setSuggestions(filteredLocations);
+
   };
 
   const handleItemClicked = (event) => {

@@ -52,8 +52,12 @@ describe('<App /> integration', () => {
             event => event.location === 'Berlin, Germany'
         );
 
+        const NOEDom = AppDOM.querySelector('#eventCount');
+        await user.type(NOEDom, '{backspace}{backspace}32');
 
-        expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+
+        // returns all the events with Berlin, Germany as the location with the number of selected events.
+        expect(allRenderedEventItems.length).toBe(berlinEvents.slice(0, NOEDom.value).length);
 
         allRenderedEventItems.forEach(event => {
             expect(event.textContent).toContain("Berlin, Germany");
