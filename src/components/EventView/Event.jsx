@@ -14,13 +14,13 @@ const Event = ({ event }) => {
 
 
     const eventDetails = (
-    
+
     ) => {
         if (showDetails) {
 
             return (
                 <ul id={data.id}>
-                
+
                     <li>{data.summary}</li>
                     <li>{sDate}</li>
                     <li>{eDate}</li>
@@ -31,12 +31,17 @@ const Event = ({ event }) => {
     }
 
     return (
-        <li id={data.summary}>
-            <button id={data.id} onClick={
+        <li className="event" id={data.summary}>
+            {data.summary}<br />
+            {data.location}<br />
+            {data.start.dateTime}
+
+            <button className="details-btn" id={data.id} onClick={
                 revealDetails
-            }>{showDetails ?  "Hide Details" : "Show Details" }</button>
+            }>{showDetails ? "Hide Details" : "Show Details"}</button>
+
             {eventDetails()}
-            </li>)
+        </li>)
 }
 
 export default Event;

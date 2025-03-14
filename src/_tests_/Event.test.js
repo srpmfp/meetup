@@ -44,7 +44,7 @@ describe('<Event> details', () => {
         }) : [];
 
         // Event Title Displayed
-        
+
         expect(EventComponent.getByText(details[0].summary)).toBeInTheDocument;
 
         // Event Start Time Displayed
@@ -61,6 +61,7 @@ describe('<Event> details', () => {
     })
 
     test('event details are hidden when button is clicked again', async () => {
+
         const allEvents = await getEvents();
         const data = getEvents[0];
         EventComponent.rerender(<Event event={data} />);
@@ -74,7 +75,7 @@ describe('<Event> details', () => {
         }) : [];
 
 
-//Check if button switchest from hide to show
+        //Check if button switchest from hide to show
         expect(EventComponent.getByText("Hide Details")).toBeInTheDocument();
         await user.click(button);
         expect(EventComponent.getByText("Show Details")).toBeInTheDocument();

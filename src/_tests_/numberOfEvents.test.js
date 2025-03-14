@@ -22,6 +22,7 @@ describe("<numberOfEvents> component", () => {
         await user.type(input, '{backspace}{backspace}24');
         expect(input).toHaveValue(24);
     })
+
     test("array filtered to match user input", async () =>{
         const allEvents = await getEvents();
         const data = allEvents;
@@ -29,8 +30,9 @@ describe("<numberOfEvents> component", () => {
 
         const user = userEvent.setup();
         await user.type(input, '{backspace}{backspace}12');
-        const intConv = parseInt(input.value)       
-        expect(data.length).toBe(intConv);
+        const intConv = parseInt(input.value) 
+        
+        expect(data.slice(0, intConv).length).toBe(intConv);
         
         })
 
