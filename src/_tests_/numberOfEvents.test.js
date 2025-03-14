@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { getEvents } from '../api';
+import { getEvents, extractLocations } from '../api';
 import App from '../App';
 import { within } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
@@ -9,7 +9,7 @@ import NumberOfEvents from '../components/numberOfEvents/NumberOfEvents';
 describe("<numberOfEvents> component", () => {
     let nComponent;
     beforeEach(() => {
-        nComponent = render(<NumberOfEvents />);
+        nComponent = render(<NumberOfEvents setCurrentNOE={() => { }} />);
     })
 
     test("text input is rendered", () => {
@@ -47,12 +47,22 @@ describe("<numberOfEvents> integration", () => {
             const user = userEvent.setup();
             const AppComponent = render(<App />);
             const AppDOM = AppComponent.container.firstChild;
+
+            const NOEDom = AppDOM.querySelector('#eventCount');
+            // const input = within(NOEDom).queryByRole('textbox');
+            await user.type(NOEDom, '{backspace}{backspace}12');
+
             const EventListDOM = AppDOM.querySelector('#event-list');
             const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-            const input = AppDOM.querySelector('#eventCount');
-            await user.type(input, '{backspace}{backspace}12');
-            const intConv = parseInt(input.value)
-            expect(allRenderedEventItems.length).toBe(intConv);
+
+
+            expect(allRenderedEventItems.length).toBe(parseInt(NOEDom.value));
+
+
+
+
+            // const intConv = parseInt(input.value)
+            // expect(EventListDOM.length).toBe(intConv);
 
         })
 })

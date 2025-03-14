@@ -16,25 +16,28 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE]);
 
   //get event details
 
-   const fetchData = async () => {
-   const allEvents = await getEvents();
-   const filteredEvents = currentCity === "See All Cities" ?
-     allEvents :
-     allEvents.filter(event => event.location === currentCity)
-   setEvents(filteredEvents.slice(0, currentNOE));
-   setAllLocations(extractLocations(allEvents));
- }
+  const fetchData = async () => {
+    const allEvents = await getEvents();
 
+    //filter events based on user input of number of events and location
+    const filteredEvents = currentCity === "See All Cities" ?
+      allEvents.slice(0, currentNOE) : //if user selects "See All Cities" show all events
+      allEvents.filter(event => event.location === currentCity)
+
+    setEvents(filteredEvents.slice(0, currentNOE));
+    setAllLocations(extractLocations(allEvents));
+  }
+  console.log(events.length);
   return (
-    <div className='App'>
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} />
+    < div className='App' >
+      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setCurrentNOE={setCurrentNOE} />
       <NumberOfEvents setCurrentNOE={setCurrentNOE} />
       <EventList events={events} />
-    </div>
+    </div >
   )
 }
 

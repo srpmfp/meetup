@@ -20,7 +20,6 @@ const Event = ({ event }) => {
 
             return (
                 <ul id={data.id}>
-
                     <li>{data.summary}</li>
                     <li>{sDate}</li>
                     <li>{eDate}</li>
