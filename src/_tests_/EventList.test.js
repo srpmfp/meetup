@@ -1,7 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import EventList from '../components/EventListView/EventList';
 import { getEvents } from '../api';
+import App from '../App';
 
 describe('<EventList /> component', () => {
     let EventListComponent;
@@ -20,5 +21,21 @@ describe('<EventList /> component', () => {
         expect(EventListComponent.getAllByRole("listitem")).toHaveLength(allEvents.length);
     });
 
+
+})
+
+describe('<EventList/> integration', () =>{
+
+test('renders a list of 32 events', async ()=>{
+   
+    const AppComonent = render(<App/>);
+    const AppDom = AppComonent.container.firstChild;
+    
+    const EventListDom = AppDom.querySelector('#event-list');
+    await waitFor(() => {
+        const EventListItems = within(EventListDom).queryAllByRole('listitem');
+        expect(EventListItems).toHaveLength(32);
+    })
+})
 
 })
