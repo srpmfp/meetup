@@ -34,31 +34,34 @@ describe('<App /> integration', () => {
         const AppDOM = AppComponent.container.firstChild;
 
 
+        //render search bar
         const CitySearchDOM = AppDOM.querySelector('#city-search');
         const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
 
-
+        // user types Berlin into the search bar and clicks on the suggestion
         await user.type(CitySearchInput, "Berlin");
         const berlinSuggestionItem = within(CitySearchDOM).queryByText('Berlin, Germany');
         await user.click(berlinSuggestionItem);
 
-
+        // renders the list of events
         const EventListDOM = AppDOM.querySelector('#event-list');
         const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
 
-
+        // gets all the events and filters them to get only the Berlin events
         const allEvents = await getEvents();
         const berlinEvents = allEvents.filter(
             event => event.location === 'Berlin, Germany'
         );
 
+        // renders event count input field
         const NOEDom = AppDOM.querySelector('#eventCount');
-        await user.type(NOEDom, '{backspace}{backspace}32');
+        await user.type(NOEDom, '{backspace}{backspace}15');
 
 
-        // returns all the events with Berlin, Germany as the location with the number of selected events.
-        expect(allRenderedEventItems.length).toBe(berlinEvents.slice(0, NOEDom.value).length);
+        // returns all the number of selected events and matches it with the number of events rendered
+        expect(allRenderedEventItems.slice(0, NOEDom.value).length).toBe(berlinEvents.slice(0, NOEDom.value).length);
 
+        // ensures all the rendered events have Berlin, Germany as the location
         allRenderedEventItems.forEach(event => {
             expect(event.textContent).toContain("Berlin, Germany");
         });

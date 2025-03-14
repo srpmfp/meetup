@@ -75,7 +75,7 @@ describe('<Event> details', () => {
         }) : [];
 
 
-        //Check if button switchest from hide to show
+        //Check if button switches from hide to show
         expect(EventComponent.getByText("Hide Details")).toBeInTheDocument();
         await user.click(button);
         expect(EventComponent.getByText("Show Details")).toBeInTheDocument();
