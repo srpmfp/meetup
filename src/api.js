@@ -7,28 +7,6 @@ export const extractLocations = (events) => {
     return locations;
 
 }
-
-export const getEvents = async () => {
-    if (window.location.href.startsWith('http://localhost')) {
-        return mockData;
-    }
-
-
-    const token = await getAccessToken();
-
-
-    if (token) {
-        removeQuery();
-        const url = "https://a1owe4bufi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-        const response = await fetch(url);
-        const result = await response.json();
-        if (result) {
-            return result.events;
-        } else return null;
-
-    }
-}
-
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
     const tokenCheck = accessToken && (await checkToken(accessToken));
@@ -92,5 +70,25 @@ const getToken = async (code) => {
 
     return access_token;
 };
+export const getEvents = async () => {
+    if (window.location.href.startsWith('http://localhost')) {
+        return mockData;
+    }
+
+
+    const token = await getAccessToken();
+
+
+    if (token) {
+        removeQuery();
+        const url = "https://a1owe4bufi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
+        const response = await fetch(url);
+        const result = await response.json();
+        if (result) {
+            return result.events;
+        } else return null;
+
+    }
+}
 
 export default { extractLocations, getEvents, getAccessToken };  // export default object containing all functions
