@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setCurrentNOE }) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -37,6 +37,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
   const queryClear = () => {
     setCurrentCity('See All Cities')
     setQuery('')
+    setShowSuggestions(false)
   }
 
   return (
