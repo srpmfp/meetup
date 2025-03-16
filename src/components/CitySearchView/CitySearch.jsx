@@ -9,7 +9,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
   useEffect(() => {
     setSuggestions(allLocations);
-    setToggle(toggle);
+    // setToggle(toggle);
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
@@ -34,6 +34,11 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
     setCurrentCity(value);
   };
 
+  const queryClear = () => {
+    setCurrentCity('See All Cities')
+    setQuery('')
+  }
+
   return (
     <div id="city-search">
       <input
@@ -51,10 +56,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
             <div className="query">
 
             {query}
-              <button onClick={() => {
-                setCurrentCity('See All Cities')
-                setQuery('')
-              }} > X</button>
+              <button onClick={queryClear} >X</button>
             </div>
 
           }
