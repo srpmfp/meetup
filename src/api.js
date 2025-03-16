@@ -19,7 +19,7 @@ export const getEvents = async () => {
 
     if (token) {
         removeQuery();
-        const url = "https://www.googleapis.com/auth/calendar.events.public.readonly" + "/" + token;
+        const url = "https://a1owe4bufi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
