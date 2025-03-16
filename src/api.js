@@ -93,4 +93,4 @@ const getToken = async (code) => {
     return access_token;
 };
 
-export default { extractLocations, getEvents, getAccessToken };
+export default { extractLocations, getEvents, getAccessToken };  // export default object containing all functions
