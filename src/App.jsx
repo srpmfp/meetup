@@ -25,7 +25,7 @@ const App = () => {
     const allEvents = await getEvents();
 
     //filter events based on user input of number of events and location
-    const filteredEvents = currentCity === "See All Cities" || currentCity === "Show Less" ?
+    const filteredEvents = currentCity === "See All Cities" ?
       allEvents.slice(0, currentNOE) : //if user selects "See All Cities" show all events
       allEvents.filter(event => event.location === currentCity)
 
