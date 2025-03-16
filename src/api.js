@@ -8,7 +8,26 @@ export const extractLocations = (events) => {
 
 }
 
+export const getEvents = async () => {
+    if (window.location.href.startsWith('http://localhost')) {
+        return mockData;
+    }
 
+
+    const token = await getAccessToken();
+
+
+    if (token) {
+        removeQuery();
+        const url = "https://www.googleapis.com/auth/calendar.events.public.readonly" + "/" + token;
+        const response = await fetch(url);
+        const result = await response.json();
+        if (result) {
+            return result.events;
+        } else return null;
+
+    }
+}
 
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
@@ -45,26 +64,7 @@ const checkToken = async (accessToken) => {
 };
 
 
-export const getEvents = async () => {
-    if (window.location.href.startsWith('http://localhost')) {
-        return mockData;
-    }
 
-
-    const token = await getAccessToken();
-
-
-    if (token) {
-        removeQuery();
-        const url = "https://www.googleapis.com/auth/calendar.events.public.readonly" + "/" + token;
-        const response = await fetch(url);
-        const result = await response.json();
-        if (result) {
-            return result.events;
-        } else return null;
-
-    }
-}
 
 const removeQuery = () => {
     let newurl;
