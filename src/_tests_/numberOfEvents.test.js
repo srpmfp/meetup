@@ -41,26 +41,3 @@ describe("<numberOfEvents> component", () => {
 
 })
 
-// describe("<numberOfEvents> integration", () => {
-//     test(
-//         "renders a list of events matching the number selected by the user", async () => {
-//             const user = userEvent.setup();
-//             const AppComponent = render(<App />);
-//             const AppDOM = AppComponent.container.firstChild;
-
-//             //getting the number of events input field
-//             const NOEDom = AppDOM.querySelector('#eventCount');
-//             const userInput = await user.type(NOEDom, '{backspace}{backspace}12'); // user types 12 into the input field
-
-
-//             const EventListDOM = AppDOM.querySelector('#event-list');
-//             const slicedEvent = EventListDOM.querySelectorAll('li').slice(0,NOEDom.value); // gets all the list items in the event list
-//             // const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
-            
-
-//             expect(slicedEvent.length).toBe(parseInt(userInput.value));// compares inputed value with the number of rendered events
-
-
-//         })
-// })
-

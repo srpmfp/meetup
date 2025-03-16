@@ -47,6 +47,9 @@ describe('<CitySearch/> component', () => {
         CitySearchComponent.rerender(<CitySearch
             allLocations={allLocations}
             setCurrentCity={() => { }}
+            setCurrentNOE={() => { }}
+            setReducedLocations={() => { }}
+
         />);
 
 
@@ -55,7 +58,7 @@ describe('<CitySearch/> component', () => {
 
 
         // the suggestion's textContent look like this: "Berlin, Germany"
-        const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
+        const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('event')[0];
 
 
         await user.click(BerlinGermanySuggestion);
@@ -63,7 +66,34 @@ describe('<CitySearch/> component', () => {
 
         expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
     });
+    test('renders a button with the selected city', async () => {
+        const user = userEvent.setup();
+        const allEvents = await getEvents();
+        const allLocations = extractLocations(allEvents);
+        CitySearchComponent.rerender(<CitySearch
+            allLocations={allLocations}
+            setCurrentCity={() => { }}
+            setCurrentNOE={() => { }}
+            setReducedLocations={() => { }}
 
+        />);
+
+
+        const cityTextBox = CitySearchComponent.queryByRole('textbox');
+        await user.type(cityTextBox, "Berlin");
+
+        const citySuggestion = CitySearchComponent.queryByRole('list');
+        // the suggestion's textContent look like this: "Berlin, Germany"
+        const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('event')[0];
+
+
+        await user.click(BerlinGermanySuggestion);
+
+        await user.click(cityTextBox)
+        expect(citySuggestion.firstChild).toHaveClass('query');
+
+
+    })
     test('renders the suggestion text in the textbox upon clicking on the suggestion', async () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
@@ -72,6 +102,7 @@ describe('<CitySearch/> component', () => {
             allLocations={allLocations}
             setCurrentCity={() => { }}
             setCurrentNOE={() => { }}
+            setReducedLocations={() => { }}
         />);
 
 
@@ -80,7 +111,7 @@ describe('<CitySearch/> component', () => {
 
 
         // the suggestion's textContent look like this: "Berlin, Germany"
-        const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
+        const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('event')[0];
 
 
         await user.click(BerlinGermanySuggestion);
@@ -89,6 +120,35 @@ describe('<CitySearch/> component', () => {
         expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
     });
 
+    test('renders a limited list of suggestions, and expands once the user selects "See all cities"', async () => {
+        const user = userEvent.setup()
+        const allEvents = await getEvents();
+        const allLocations = extractLocations(allEvents);
+        const slicedLocations = allLocations.slice(0, 3);
+
+        CitySearchComponent.rerender(<CitySearch
+            allLocations={slicedLocations}
+            setCurrentCity={() => { }}
+            setCurrentNOE={() => { }}
+            setReducedLocations={() => { }}
+        />);
+
+
+
+
+        // const AppDom = AppComponent.container.firstChild;
+        // const CitySearchDom = AppDom.querySelector('#city-search');
+        const cityTextBox = CitySearchComponent.queryByRole('textbox');
+        await user.click(cityTextBox);
+
+        const suggestionList = CitySearchComponent.queryAllByRole('event');
+
+        expect(suggestionList.length).toBe(slicedLocations.length);
+
+
+
+
+    })
 
 })
 describe('city search integration', () => {
@@ -102,6 +162,7 @@ describe('city search integration', () => {
         const allEvents = await getEvents();
 
 
+
         // Gets the textbox contents
         const citySearchDom = AppDom.querySelector('#city-search');
         const cityTextBox = within(citySearchDom).queryByRole('textbox');
@@ -109,11 +170,11 @@ describe('city search integration', () => {
 
         const BerlinGermanySuggestion = within(citySearchDom).queryAllByRole('listitem')[0];
         await user.click(BerlinGermanySuggestion);
-        const allLocations = extractLocations(allEvents);
+
 
         const NOEDom = AppDom.querySelector('#eventCount');
         await user.type(NOEDom, '{backspace}{backspace}13');
-        
+
 
 
         // Gets the suggestions list
@@ -122,8 +183,5 @@ describe('city search integration', () => {
         const suggestionListItems = within(eventListDom).queryAllByRole('listitem');
 
         expect(suggestionListItems.length).toBe(allEvents.slice(0, NOEDom.value).length);
-;
     });
-
-
 })

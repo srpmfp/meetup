@@ -11,12 +11,13 @@ const App = () => {
   const [currentNOE, setCurrentNOE] = useState(32);
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState('See All Cities');
+  const [reducedLocations, setReducedLocations] = useState(true);
 
 
 
   useEffect(() => {
     fetchData();
-  }, [currentCity, currentNOE]);
+  }, [currentCity, currentNOE, reducedLocations]);
 
   //get event details
 
@@ -24,17 +25,22 @@ const App = () => {
     const allEvents = await getEvents();
 
     //filter events based on user input of number of events and location
-    const filteredEvents = currentCity === "See All Cities" ?
+    const filteredEvents = currentCity === "See All Cities" || currentCity === "Show Less" ?
       allEvents.slice(0, currentNOE) : //if user selects "See All Cities" show all events
       allEvents.filter(event => event.location === currentCity)
 
     setEvents(filteredEvents.slice(0, currentNOE));
-    setAllLocations(extractLocations(allEvents));
+    if (reducedLocations) {
+      setAllLocations(extractLocations(allEvents).slice(0, 3))
+    }
+    if (!reducedLocations) {
+      setAllLocations(extractLocations(allEvents))
+    }
   }
 
   return (
     < div className='App' >
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setCurrentNOE={setCurrentNOE} />
+      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setCurrentNOE={setCurrentNOE} setReducedLocations={setReducedLocations} />
       <NumberOfEvents setCurrentNOE={setCurrentNOE} />
       <EventList events={events} />
     </div >

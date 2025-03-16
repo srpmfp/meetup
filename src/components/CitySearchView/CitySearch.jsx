@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     setSuggestions(allLocations);
-  }, [`${allLocations}`, setCurrentCity]);
+    setToggle(toggle);
+  }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
   const handleInputChanged = (event) => {
     const value = event.target.value;
 
-    const filteredLocations = allLocations ? allLocations.filter((location) => {
-      return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
-    }) : [];
+    const filteredLocations =
+      allLocations ? allLocations.filter((location) => {
+        return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+      }) : [];
     setQuery(value);
     setSuggestions(filteredLocations);
 
@@ -43,13 +46,26 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
       />
       {showSuggestions ?
         <ul className="suggestions">
-          <li key='See all cities' onClick={handleItemClicked}>
-            <b>See All Cities</b>
-          </li>
-          {suggestions.map((suggestion) => {
-            return <li onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
-          })}
+          {query === '' ? null :
 
+            <div className="query">
+
+            {query}
+              <button onClick={() => {
+                setCurrentCity('See All Cities')
+                setQuery('')
+              }} > X</button>
+            </div>
+
+          }
+          {
+            suggestions.map((suggestion) => {
+              return <li role='event' onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
+            })
+          }
+          <li key='See all cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
+            {!toggle ? <b role="toggle">See All Cities</b> : <b role="toggle">Show Less</b>}
+          </li>
         </ul>
         : null
       }
