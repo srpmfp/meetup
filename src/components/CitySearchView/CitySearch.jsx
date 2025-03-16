@@ -9,7 +9,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
   useEffect(() => {
     setSuggestions(allLocations);
-    // setToggle(toggle);
+    // setToggle(toggle); // remove this line
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
@@ -55,7 +55,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
             <div className="query">
 
-            {query}
+              {query}
               <button onClick={queryClear} >X</button>
             </div>
 
