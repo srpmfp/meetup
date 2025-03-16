@@ -26,7 +26,7 @@ const App = () => {
 
     //filter events based on user input of number of events and location
     const filteredEvents = currentCity === "See All Cities" ?
-      allEvents : //if user selects "See All Cities" show all events
+      allEvents.slice(0, currentNOE) : //if user selects "See All Cities" show all events
       allEvents.filter(event => event.location === currentCity)
 
     setEvents(filteredEvents.slice(0, currentNOE));
@@ -40,8 +40,8 @@ const App = () => {
 
   return (
     < div className='App' >
-      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setCurrentNOE={setCurrentNOE} setReducedLocations={setReducedLocations} />
-      <NumberOfEvents setCurrentNOE={setCurrentNOE} />
+      <CitySearch allLocations={allLocations} setCurrentCity={setCurrentCity} setReducedLocations={setReducedLocations} />
+      <NumberOfEvents currentNOE={currentNOE} setCurrentNOE={setCurrentNOE} />
       <EventList events={events} />
     </div >
   )
