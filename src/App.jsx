@@ -22,25 +22,34 @@ const App = () => {
   //get event details
 
   const fetchData = async () => {
-    const allEvents = await getEvents();
+    try {
+      const allEvents = await getEvents();
+      if (!allEvents) {
+        console.error("No events fetched");
+        return;
+      }
 
-    //filter events based on user input of number of events and location
-    const filteredEvents =
-      currentCity === 'See All Cities'
-        ? allEvents : //if user selects "See All Cities" show all events
-        allEvents.filter(event => event.location === currentCity)
-    if (!filteredEvents) {
-      return setEvents(getEvents())//if no events are found, show all events
+      const filteredEvents =
+        currentCity === 'See All Cities'
+          ? allEvents
+          : allEvents.filter(event => event.location === currentCity);
 
+      if (!filteredEvents.length) {
+        console.warn("No filtered events found, showing all events");
+        setEvents(allEvents);
+      } else {
+        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
+      }
+
+      if (reducedLocations) {
+        setAllLocations(extractLocations(allEvents).slice(0, 3));
+      } else {
+        setAllLocations(extractLocations(allEvents));
+      }
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
     }
-    setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
-    if (reducedLocations) {
-      setAllLocations(extractLocations(allEvents).slice(0, 3))
-    }
-    else {
-      setAllLocations(extractLocations(allEvents))
-    }
-  }
+  };
 
   return (
     < div className='App' >
