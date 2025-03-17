@@ -30,7 +30,7 @@ const App = () => {
         ? allEvents : //if user selects "See All Cities" show all events
         allEvents.filter(event => event.location === currentCity)
     if (!filteredEvents) {
-      return console.log(currentNOE)
+      return console.log(currentNOE, currentCity)
 
     }
     setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
