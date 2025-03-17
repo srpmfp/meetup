@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setCurrentNOE }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -27,8 +27,6 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setCurr
 
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
-
-
     setQuery(value);
     setShowSuggestions(false);
     setCurrentCity(value);
