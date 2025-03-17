@@ -55,8 +55,9 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setCurr
           {query === '' ? null :
 
             <div className="query">
-
-              {query}
+              <div className="query-text">
+                {query}
+              </div>
               <button onClick={queryClear} >X</button>
             </div>
 

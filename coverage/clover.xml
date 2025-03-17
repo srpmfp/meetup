@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742157831042" clover="3.2.0">
-  <project timestamp="1742157831042" name="All files">
-    <metrics statements="114" coveredstatements="76" conditionals="40" coveredconditionals="18" methods="28" coveredmethods="23" elements="182" coveredelements="117" complexity="0" loc="114" ncloc="114" packages="6" files="10" classes="10"/>
+<coverage generated="1742171955516" clover="3.2.0">
+  <project timestamp="1742171955516" name="All files">
+    <metrics statements="115" coveredstatements="76" conditionals="40" coveredconditionals="18" methods="28" coveredmethods="23" elements="183" coveredelements="117" complexity="0" loc="115" ncloc="115" packages="6" files="10" classes="10"/>
     <package name="meet">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="eslint.config.js" path="C:\Users\seanr\meet\eslint.config.js">
@@ -92,9 +92,9 @@
       </file>
     </package>
     <package name="meet.src.components.CitySearchView">
-      <metrics statements="25" coveredstatements="23" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
+      <metrics statements="26" coveredstatements="23" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
       <file name="CitySearch.jsx" path="C:\Users\seanr\meet\src\components\CitySearchView\CitySearch.jsx">
-        <metrics statements="25" coveredstatements="23" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
+        <metrics statements="26" coveredstatements="23" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
         <line num="3" count="4" type="stmt"/>
         <line num="5" count="101" type="stmt"/>
         <line num="6" count="101" type="stmt"/>
@@ -116,10 +116,11 @@
         <line num="37" count="101" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="42" count="101" type="stmt"/>
-        <line num="49" count="8" type="stmt"/>
-        <line num="65" count="249" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="101" type="stmt"/>
+        <line num="50" count="8" type="stmt"/>
+        <line num="67" count="249" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
       </file>
     </package>
     <package name="meet.src.components.EventListView">
