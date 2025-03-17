@@ -89,11 +89,31 @@ input[type="number"] {
 }
 
 .suggestions>div {
+  display: flex;
+  justify-content: space-between;
   background-color: #b49595;
 
   && button {
-    margin: 0 auto;
+    height: min-content;
+    width: min-content;
+    border-radius: 30%;
+    background-color: #364d4c;
+
+   
+    }
+         && button:hover {
+           background-color: #bcdcdb;
   }
+
+}
+
+.query {
+
+  padding: .5em;
+}
+
+.query-text {
+  width: fit-content
 }
 
 .suggestions>li:last-child {

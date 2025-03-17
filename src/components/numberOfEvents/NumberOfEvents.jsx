@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const NumberOfEvents = ({currentNOE, setCurrentNOE }) => {
+const NumberOfEvents = ({ currentNOE, setCurrentNOE }) => {
 
-    const [count, setCurrentCount] = useState(currentNOE);
+    const [count, setCurrentCount] = useState(32);
 
     useEffect(() => {
         setCurrentCount(count)
