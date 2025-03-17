@@ -5,7 +5,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
     const [count, setCurrentCount] = useState(32);
 
     useEffect(() => {
-        setCurrentCount(count)
+        setCurrentCount(parseInt(count))
     }, [setCurrentNOE])
 
 

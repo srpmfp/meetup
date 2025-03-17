@@ -27,9 +27,9 @@ const App = () => {
     //filter events based on user input of number of events and location
     const filteredEvents =
       currentCity === "See All Cities"
-      ?allEvents : //if user selects "See All Cities" show all events
-      allEvents.filter(event => event.location === currentCity)
-    setEvents(filteredEvents.slice(0, currentNOE));
+        ? allEvents : //if user selects "See All Cities" show all events
+        allEvents.filter(event => event.location === currentCity)
+    setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
     if (reducedLocations) {
       setAllLocations(extractLocations(allEvents).slice(0, 3))
     }
