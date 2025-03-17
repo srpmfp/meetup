@@ -65,7 +65,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
               return <li role='event' onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
             })
           }
-          <li key='See all cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
+          <li key='See All Cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
             {!toggle ? <b role="toggle">See All Cities</b> : <b role="toggle">Show Less</b>}
           </li>
         </ul>
