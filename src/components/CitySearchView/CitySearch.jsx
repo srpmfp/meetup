@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -10,7 +10,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
   useEffect(() => {
     setSuggestions(allLocations);
     // setToggle(toggle); // remove this line
-  }, [allLocations, setCurrentCity, setReducedLocations]);
+  }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
   const handleInputChanged = (event) => {
