@@ -29,10 +29,11 @@ const App = () => {
         return;
       }
 
-      const filteredEvents =
+      const filteredEvents = () => {
         currentCity === 'See All Cities'
           ? allEvents
           : allEvents.filter(event => event.location === currentCity);
+      }
 
       if (!filteredEvents.length) {
         console.warn("No filtered events found, showing all events");
