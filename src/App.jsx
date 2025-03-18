@@ -40,12 +40,7 @@ const App = () => {
       } else {
         setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
       }
-
-      if (reducedLocations) {
-        setAllLocations(extractLocations(allEvents).slice(0, 3));
-      } else {
-        setAllLocations(extractLocations(allEvents));
-      }
+      setAllLocations(extractLocations(allEvents));
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }
