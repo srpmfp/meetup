@@ -38,7 +38,8 @@ const App = () => {
         console.warn("No filtered events found, showing all events");
         setEvents(allEvents);
       } else {
-        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
+        setEvents(filteredEvents)
+          // .slice(0, parseInt(currentNOE)));
       }
       setAllLocations(extractLocations(allEvents));
     } catch (error) {
