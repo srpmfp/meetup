@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 
 const Event = ({ event }) => {
 
-    // const [data, setData] = useState(event);
+    const [data, setData] = useState(event);
     const [showDetails, setShowDetails] = useState(false);
-    const sDate = new Date(event.start.dateTime).toString()
-    const eDate = new Date(event.end.dateTime).toString()
+    const sDate = new Date(data.start.dateTime).toString()
+    const eDate = new Date(data.end.dateTime).toString()
 
     const revealDetails = () => {
         setShowDetails(!showDetails);
@@ -19,23 +19,23 @@ const Event = ({ event }) => {
         if (showDetails) {
 
             return (
-                <ul id={event.id}>
-                    <li>{event.summary}</li>
+                <ul id={data.id}>
+                    <li>{data.summary}</li>
                     <li>{sDate}</li>
                     <li>{eDate}</li>
-                    <li>{event.location}</li>
-                    <li>{event.description}</li>
+                    <li>{data.location}</li>
+                    <li>{data.description}</li>
                 </ul>)
         }
     }
 
     return (
-        <li className="event" id={event.summary}>
-            {event.summary}<br />
-            {event.location}<br />
-            {event.start.dateTime}
+        <li className="event" id={data.summary}>
+            {data.summary}<br />
+            {data.location}<br />
+            {data.start.dateTime}
 
-            <button className="details-btn" id={event.id} onClick={
+            <button className="details-btn" id={data.id} onClick={
                 revealDetails
             }>{showDetails ? "Hide Details" : "Show Details"}</button>
 
