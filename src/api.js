@@ -27,8 +27,7 @@ export const getEvents = async () => {
     if (window.location.href.startsWith('http://localhost')) {
         return mockData;
 
-    } else {
-
+    } 
 
         const token = await getAccessToken();
 
@@ -43,7 +42,7 @@ export const getEvents = async () => {
                 return result.events;
             } else return;
 
-        }
+        
     }
 }
 const getToken = async (code) => {
