@@ -27,22 +27,22 @@ export const getEvents = async () => {
     if (window.location.href.startsWith('http://localhost')) {
         return mockData;
 
-    } 
+    }
 
-        const token = await getAccessToken();
+    const token = await getAccessToken();
 
 
-        if (token) {
-            removeQuery();
-            const url = "https://a1owe4bufi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
-            const response = await fetch(url);
-            const result = await response.json();
-            if (result) {
-                
-                return result.events;
-            } else return;
+    if (token) {
+        removeQuery();
+        const url = "https://a1owe4bufi.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
+        const response = await fetch(url);
+        const result = await response.json();
+        if (result) {
 
-        
+            return result;
+        } else return;
+
+
     }
 }
 const getToken = async (code) => {

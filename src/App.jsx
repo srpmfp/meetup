@@ -14,7 +14,6 @@ const App = () => {
   const [reducedLocations, setReducedLocations] = useState(true);
 
 
-
   useEffect(() => {
     console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
     fetchData();
