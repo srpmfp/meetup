@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearchView/CitySearch.jsx';
 import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
-import { extractLocations, getEvents } from './api';
+import { extractLocations, getEvents } from './api.js';
 import './App.css';
 
 
@@ -22,7 +22,7 @@ const App = () => {
   //get event details
 
   const fetchData = async () => {
-   
+
     try {
       const allEvents = await getEvents();
       if (!allEvents) {
