@@ -13,7 +13,7 @@ Meetup is an app to help connect people to the events they want to go to.
 ## "GWT"
 |Number|Scenario| Given| When| Then|
 |---|---|---|---|---|
-1| <span style="color: lightBlue"> Filter by city| the user hasn't searched for a cit| the user opens up the app| they are shown locations with up and coming events.
+1| <span style="color: lightBlue"> Filter by city| the user is located in or traveling to a city| when they select from a dropdown| they are shown the corresponding location.
 2|<span style="color: lightBlue;">Show event in event list| the user is viewing the event list|the user clicks on the "Show Event" button for a specific event| the event details are displayed
 3|<span style="color: lightBlue;">Hide the event| the user has opened an event from the list| the user clicks on the "Hide Event" button for the same event|the event details are hidden.
 4| <span style="color: lightBlue;"> changing the count of events visable| the user sees a series of events and info| the user selects an number of events to be shown| the list will adjust to account for the change
