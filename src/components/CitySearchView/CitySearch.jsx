@@ -7,8 +7,11 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [toggle, setToggle] = useState(false);
 
+
   useEffect(() => {
     setSuggestions(allLocations);
+    setCurrentCity('See All Cities')
+    setReducedLocations(true)
 
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 

@@ -39,7 +39,7 @@ export const getEvents = async () => {
         const result = await response.json();
         if (result) {
 
-            return result.event;
+            return result.events;
         } else return;
 
 
