@@ -18,8 +18,8 @@ const App = () => {
   useEffect(() => {
     console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
     fetchData();
-  }, [currentCity]);
-// , currentNOE, reducedLocations
+  }, [currentCity, currentNOE, reducedLocations]);
+
   //get event details
 
   const fetchData = async () => {
@@ -35,21 +35,24 @@ const App = () => {
         currentCity === 'See All Cities'
           ? allEvents
           : allEvents.filter(event => event.location === currentCity);
+      setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
+      setAllLocations(extractLocations(allEvents));
 
-      if (!filteredEvents.length) {
-        console.warn("No filtered events found, showing all events");
-        setEvents(allEvents);
-      } else {
-        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
-      }
 
-      if (reducedLocations) {
-        setAllLocations(extractLocations(allEvents).slice(0, 3));
-        return;
-      } else {
-        setAllLocations(extractLocations(allEvents));
-        return;
-      }
+      // if (!filteredEvents.length) {
+      //   console.warn("No filtered events found, showing all events");
+      //   setEvents(allEvents);
+      // } else {
+      //   setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
+      // }
+
+      // if (reducedLocations) {
+      //   setAllLocations(extractLocations(allEvents).slice(0, 3));
+      //   return;
+      // } else {
+      //   setAllLocations(extractLocations(allEvents));
+      //   return;
+      // }
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }
