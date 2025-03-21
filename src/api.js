@@ -39,7 +39,7 @@ export const getEvents = async () => {
             const result = await response.json();
             if (result) {
                 return result.events;
-            } else return null;
+            } else return console.log("No events found");
 
         }
     }
