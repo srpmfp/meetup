@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
@@ -9,7 +9,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
 
   useEffect(() => {
     setSuggestions(allLocations);
-    // setToggle(toggle); // remove this line
+
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
@@ -65,7 +65,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
               return <li role='event' onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
             })
           }
-          <li key='See all cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
+          <li key='See All Cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
             {!toggle ? <b role="toggle">See All Cities</b> : <b role="toggle">Show Less</b>}
           </li>
         </ul>
