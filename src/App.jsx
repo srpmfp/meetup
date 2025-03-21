@@ -42,11 +42,11 @@ const App = () => {
       }
 
       if (reducedLocations) {
-        setAllLocations(extractLocations(allEvents).slice(0, 3));
-        return;
+        return setAllLocations(extractLocations(allEvents).slice(0, 3));
+       
       } else {
-        setAllLocations(extractLocations(allEvents));
-        return;
+        return setAllLocations(extractLocations(allEvents));
+        
       }
     } catch (error) {
       console.error("Failed to fetch data:", error);

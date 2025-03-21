@@ -25,7 +25,6 @@ const removeQuery = () => {
 
 export const getEvents = async () => {
     if (window.location.href.startsWith('http://localhost')) {
-        console.log("No events found");
         return mockData;
 
     } else {
@@ -40,9 +39,9 @@ export const getEvents = async () => {
             const response = await fetch(url);
             const result = await response.json();
             if (result) {
-                console.log("events found");
-                return result.events
-            } else return console.log("No events found");
+                
+                return result.events;
+            } else return;
 
         }
     }
