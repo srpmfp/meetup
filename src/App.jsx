@@ -16,13 +16,14 @@ const App = () => {
 
 
   useEffect(() => {
+    console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
     fetchData();
   }, [currentCity, currentNOE, reducedLocations]);
 
   //get event details
 
   const fetchData = async () => {
-    console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
+   
     try {
       const allEvents = await getEvents();
       if (!allEvents) {
