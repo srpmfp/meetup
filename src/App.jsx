@@ -22,6 +22,7 @@ const App = () => {
   //get event details
 
   const fetchData = async () => {
+    console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
     try {
       const allEvents = await getEvents();
       if (!allEvents) {
@@ -42,11 +43,11 @@ const App = () => {
       }
 
       if (reducedLocations) {
-        return setAllLocations(extractLocations(allEvents).slice(0, 3));
-       
+        setAllLocations(extractLocations(allEvents).slice(0, 3));
+        return;
       } else {
-        return setAllLocations(extractLocations(allEvents));
-        
+        setAllLocations(extractLocations(allEvents));
+        return;
       }
     } catch (error) {
       console.error("Failed to fetch data:", error);
