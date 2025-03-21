@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('See All Cities');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [toggle, setToggle] = useState(false);
