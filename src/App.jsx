@@ -26,7 +26,7 @@ const App = () => {
     try {
       const allEvents = await getEvents();
       if (!allEvents) {
-        console.error("No events fetched");
+        console.log("No events fetched");
         return;
       }
 
@@ -36,7 +36,7 @@ const App = () => {
           : allEvents.filter(event => event.location === currentCity);
 
       if (!filteredEvents.length) {
-        console.warn("No filtered events found, showing all events");
+        console.log("No filtered events found, showing all events");
         setEvents(allEvents);
       } else {
         setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
@@ -50,7 +50,7 @@ const App = () => {
         return;
       }
     } catch (error) {
-      console.error("Failed to fetch data:", error);
+      console.log("Failed to fetch data:", error);
     }
   };
 

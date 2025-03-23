@@ -19,7 +19,7 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
         <input role="textbox"
             id="eventCount"
             type="number"
-            placeholder={"Enter number of events"}
+            placeholder="Enter number of events"
             value={count}
             onChange={handleInput} />
     )

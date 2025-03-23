@@ -20,15 +20,17 @@ defineFeature(feature, test => {
             AppComponent = render(<App />);
 
         });
-
+        let NOEdom;
         then('they should see events from all cities', async () => {
             //assertion code
             const AppDom = AppComponent.container.firstChild
+            NOEdom = AppDom.querySelector('#eventCount')
             const eventList = AppDom.querySelector('#event-list');
 
             await waitFor(() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
-                expect(EventListItems.length).toBe(32)
+                const filteredEvents = EventListItems.slice(0, NOEdom.value)
+                expect(filteredEvents.length).toBe(32)
 
             })
         });
@@ -75,17 +77,21 @@ defineFeature(feature, test => {
 
             await user.type(cityInput, 'Berlin')
 
+            expect(cityInput.value).toBe('Berlin')
 
         });
         let suggestionList;
         and('the suggested cities are shown', () => {
-            suggestionList = within(CitySearch).queryByRole('event')
-            expect(suggestionList).toHaveTextContent('Berlin, Germany')
+            suggestionList = within(CitySearch).queryAllByRole('event')
+            expect(suggestionList).toHaveLength(1)
+
         });
 
         when('the city input field should be updated with the selected city', async () => {
             const user = userEvent.setup();
-            await user.click(suggestionList);
+
+            await user.click(suggestionList[0]);
+            expect(cityInput.value).toBe('Berlin, Germany')
         });
 
         then('the city input field should be updated with the selected city', () => {

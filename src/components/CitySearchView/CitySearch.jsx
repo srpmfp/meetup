@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
-  const [query, setQuery] = useState('See All Cities');
+  const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -10,8 +10,8 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
   useEffect(() => {
     setSuggestions(allLocations);
-    setCurrentCity('See All Cities')
-    setReducedLocations(true)
+    setQuery('')
+    setToggle(!toggle)
 
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
@@ -36,7 +36,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
   };
 
   const queryClear = () => {
-    setCurrentCity('See All Cities')
+    setCurrentCity('See All ')
     setQuery('')
     setShowSuggestions(false)
   }
@@ -48,7 +48,10 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
         className="city"
         placeholder="Search for a city"
         value={query}
-        onFocus={() => setShowSuggestions(true)}
+        onFocus={() => {
+          setShowSuggestions(true)
+        }
+        }
         onChange={handleInputChanged}
       />
       {showSuggestions ?

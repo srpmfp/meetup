@@ -1,4 +1,6 @@
-module.exports = {
+/** @type {import('jest').Config} */
+
+const config = {
     "testEnvironment": 'jest-environment-jsdom',
 
     "preset": "jest-puppeteer",
@@ -23,4 +25,5 @@ module.exports = {
     "coverageDirectory": 'coverage',
     "coverageReporters": ['json', 'lcov', 'text', 'clover']
 
-};  
+};
+module.exports = config

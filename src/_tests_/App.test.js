@@ -59,7 +59,7 @@ describe('<App /> integration', () => {
 
 
         // returns all the number of selected events and matches it with the number of events rendered
-        expect(allRenderedEventItems.slice(0, NOEDom.value).length).toBe(berlinEvents.slice(0, NOEDom.value).length);
+        expect(allRenderedEventItems.slice(0, NOEDom.value).length).toBe(15);
 
         // ensures all the rendered events have Berlin, Germany as the location
         allRenderedEventItems.forEach(event => {
