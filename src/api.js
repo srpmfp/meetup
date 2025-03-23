@@ -26,8 +26,8 @@ const removeQuery = () => {
 export const getEvents = async () => {
     if (window.location.href.startsWith('http://localhost')) {
         return mockData;
-    }
 
+    }
 
     const token = await getAccessToken();
 
@@ -38,8 +38,10 @@ export const getEvents = async () => {
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
+
             return result.events;
-        } else return null;
+        } else return;
+
 
     }
 }

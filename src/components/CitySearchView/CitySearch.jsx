@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [toggle, setToggle] = useState(false);
 
+
   useEffect(() => {
     setSuggestions(allLocations);
-    // setToggle(toggle); // remove this line
+    setQuery('')
+    setToggle(!toggle)
+
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
@@ -33,7 +36,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
   };
 
   const queryClear = () => {
-    setCurrentCity('See All Cities')
+    setCurrentCity('See All ')
     setQuery('')
     setShowSuggestions(false)
   }
@@ -45,7 +48,10 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
         className="city"
         placeholder="Search for a city"
         value={query}
-        onFocus={() => setShowSuggestions(true)}
+        onFocus={() => {
+          setShowSuggestions(true)
+        }
+        }
         onChange={handleInputChanged}
       />
       {showSuggestions ?
@@ -65,7 +71,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations}) => {
               return <li role='event' onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
             })
           }
-          <li key='See all cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
+          <li key='See All Cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
             {!toggle ? <b role="toggle">See All Cities</b> : <b role="toggle">Show Less</b>}
           </li>
         </ul>
