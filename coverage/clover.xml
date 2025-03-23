@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1742692682014" clover="3.2.0">
-  <project timestamp="1742692682014" name="All files">
-    <metrics statements="128" coveredstatements="84" conditionals="44" coveredconditionals="20" methods="28" coveredmethods="23" elements="200" coveredelements="127" complexity="0" loc="128" ncloc="128" packages="6" files="10" classes="10"/>
+<coverage generated="1742694714013" clover="3.2.0">
+  <project timestamp="1742694714013" name="All files">
+    <metrics statements="129" coveredstatements="84" conditionals="44" coveredconditionals="20" methods="28" coveredmethods="23" elements="201" coveredelements="127" complexity="0" loc="129" ncloc="129" packages="6" files="12" classes="12"/>
     <package name="meet">
-      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="eslint.config.js" path="C:\Users\seanr\meet\eslint.config.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="eslintrc.js" path="C:\Users\seanr\meet\eslintrc.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="jest-puppeteer.js" path="C:\Users\seanr\meet\jest-puppeteer.js">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
       </file>
       <file name="vite.config.js" path="C:\Users\seanr\meet\vite.config.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -107,30 +114,30 @@
       <file name="CitySearch.jsx" path="C:\Users\seanr\meet\src\components\CitySearchView\CitySearch.jsx">
         <metrics statements="28" coveredstatements="25" conditionals="8" coveredconditionals="7" methods="9" coveredmethods="8"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="5" count="126" type="stmt"/>
-        <line num="6" count="126" type="stmt"/>
-        <line num="7" count="126" type="stmt"/>
-        <line num="8" count="126" type="stmt"/>
-        <line num="11" count="126" type="stmt"/>
+        <line num="5" count="128" type="stmt"/>
+        <line num="6" count="128" type="stmt"/>
+        <line num="7" count="128" type="stmt"/>
+        <line num="8" count="128" type="stmt"/>
+        <line num="11" count="128" type="stmt"/>
         <line num="12" count="28" type="stmt"/>
         <line num="13" count="28" type="stmt"/>
         <line num="14" count="28" type="stmt"/>
-        <line num="19" count="126" type="stmt"/>
+        <line num="19" count="128" type="stmt"/>
         <line num="20" count="42" type="stmt"/>
         <line num="23" count="42" type="cond" truecount="1" falsecount="1"/>
         <line num="24" count="342" type="stmt"/>
         <line num="26" count="42" type="stmt"/>
         <line num="27" count="42" type="stmt"/>
-        <line num="31" count="126" type="stmt"/>
+        <line num="31" count="128" type="stmt"/>
         <line num="32" count="5" type="stmt"/>
         <line num="33" count="5" type="stmt"/>
         <line num="34" count="5" type="stmt"/>
         <line num="35" count="5" type="stmt"/>
-        <line num="38" count="126" type="stmt"/>
+        <line num="38" count="128" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="44" count="126" type="stmt"/>
+        <line num="44" count="128" type="stmt"/>
         <line num="52" count="10" type="stmt"/>
         <line num="71" count="267" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
