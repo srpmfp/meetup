@@ -1,7 +1,7 @@
 /** @type {import('jest').Config} */
 
 const config = {
-    "testEnvironment": 'jest-environment-jsdom',
+    // "testEnvironment": 'jest-environment-jsdom',
 
     "preset": "jest-puppeteer",
     "transform": {

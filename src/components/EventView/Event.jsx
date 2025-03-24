@@ -19,7 +19,7 @@ const Event = ({ event }) => {
         if (showDetails) {
 
             return (
-                <ul id={data.id}>
+                <ul className="eventDetails" id={data.id}>
                     <li>{data.summary}</li>
                     <li>{sDate}</li>
                     <li>{eDate}</li>
