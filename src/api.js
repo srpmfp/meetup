@@ -41,8 +41,6 @@ export const getEvents = async () => {
 
             return result;
         } else return;
-
-
     }
 }
 const getToken = async (code) => {
