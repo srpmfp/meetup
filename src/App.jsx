@@ -17,8 +17,8 @@ const App = () => {
   useEffect(() => {
     console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
     fetchData();
-  }, [currentCity]);
-// , currentNOE, reducedLocations
+  }, [currentCity, currentNOE, reducedLocations]);
+
   //get event details
 
   const fetchData = async () => {
