@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,24 +113,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">751x</span>
+<span class="cline-any cline-yes">751x</span>
+<span class="cline-any cline-yes">751x</span>
+<span class="cline-any cline-yes">751x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">751x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">751x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">751x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,7 +137,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">751x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,24 +156,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 &nbsp;
 &nbsp;
-const Event = <span class="fstat-no" title="function not covered" >({</span> event }) =&gt; {
+const Event = ({ event }) =&gt; {
 &nbsp;
-    const [data, setData] = <span class="cstat-no" title="statement not covered" >useState(event);</span>
-    const [showDetails, setShowDetails] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-    const sDate = <span class="cstat-no" title="statement not covered" >new Date(data.start.dateTime).toString()</span>
-    const eDate = <span class="cstat-no" title="statement not covered" >new Date(data.end.dateTime).toString()</span>
+    const [data, setData] = useState(event);
+    const [showDetails, setShowDetails] = useState(false);
+    const sDate = new Date(data.start.dateTime).toString()
+    const eDate = new Date(data.end.dateTime).toString()
 &nbsp;
-    const revealDetails = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        setShowDetails(!showDetails);</span>
+    const revealDetails = () =&gt; {
+        setShowDetails(!showDetails);
     }
 &nbsp;
 &nbsp;
-    const eventDetails = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(</span></span>
+    const eventDetails = (
 &nbsp;
     ) =&gt; {
-<span class="cstat-no" title="statement not covered" >        if (showDetails) {</span>
+        if (showDetails) {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            return (</span>
+            return (
                 &lt;ul className="eventDetails" id={data.id}&gt;
                     &lt;li&gt;{data.summary}&lt;/li&gt;
                     &lt;li&gt;{sDate}&lt;/li&gt;
@@ -184,7 +184,7 @@ const Event = <span class="fstat-no" title="function not covered" >({</span> eve
         }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;li className="event" id={data.summary}&gt;
             {data.summary}&lt;br /&gt;
             {data.location}&lt;br /&gt;
@@ -205,7 +205,7 @@ export default Event;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-24T01:10:01.695Z
+                at 2025-03-25T01:51:58.964Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
