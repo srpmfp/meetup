@@ -25,7 +25,7 @@ const App = () => {
 
     try {
       const allEvents = await getEvents();
-      if (!allEvents) {
+      if (allEvents == []) {
         console.log("No events fetched");
         return;
       }
