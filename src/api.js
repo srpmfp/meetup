@@ -22,7 +22,7 @@ export const getEvents = async () => {
         const result = await response.json();
         if (result) {
 
-            return result.data.items;
+            return result.events;
         } else return;
     }
 }
