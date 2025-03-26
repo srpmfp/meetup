@@ -30,9 +30,9 @@ defineFeature(feature, test => {
            
         });
 
-        then('they should see the details of the first event', () => {
+        then('they should see the details of the first event', async () => {
             const user = userEvent.setup()
-            waitFor(() => {
+            await waitFor(() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
                 user.click(within(firstEvent).getByText('Show Details'))
