@@ -24,10 +24,10 @@ defineFeature(feature, test => {
         })
         let eventList
         when('they click the "Show Details" button for the first event', async () => {
-          
+
             const AppDom = AppComponent.container.firstChild;
-           eventList = AppDom.querySelector('#event-list');
-           
+            eventList = AppDom.querySelector('#event-list');
+
         });
 
         then('they should see the details of the first event', async () => {
@@ -35,7 +35,7 @@ defineFeature(feature, test => {
             await waitFor(() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
-                user.click(within(firstEvent).getByText('Show Details'))
+                await user.click(within(firstEvent).getByText('Show Details'))
                 expect(eventDetails).toBeInTheDocument()
             })
         });
@@ -55,7 +55,7 @@ defineFeature(feature, test => {
             waitFor(() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
-                user.click(within(firstEvent).getByText('Show Details'))
+                await user.click(within(firstEvent).getByText('Show Details'))
                 expect(eventDetails).toBeInTheDocument()
             })
         });
@@ -65,7 +65,7 @@ defineFeature(feature, test => {
             waitFor(() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
-                user.click(within(firstEvent).getByText('Hide Details'))
+                await user.click(within(firstEvent).getByText('Hide Details'))
 
             })
         });
