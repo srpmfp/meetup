@@ -41,7 +41,7 @@ defineFeature(feature, test => {
                 appComponent = render(<App />);
                 const AppDom = appComponent.container.firstChild
                 inputDom = AppDom.querySelector('#eventCount')
-                user.clear(inputDom)
+                await user.clear(inputDom)
                 expect(inputDom.value).toBe('')
             });
 
