@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
     const [count, setCurrentCount] = useState(32);
 
@@ -11,8 +11,17 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
 
     const handleInput = (event) => {
         const value = event.target.value;
-        setCurrentCount(value);
-        setCurrentNOE(parseInt(value));
+       
+       
+        if (value <= 0) {
+            setErrorAlert('Must display at least 1 event');
+        } else {
+            setErrorAlert('');
+            setCurrentNOE(parseInt(value));
+            setCurrentCount(value);
+        }
+      
+        
     }
 
     return (
