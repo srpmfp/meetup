@@ -4,6 +4,7 @@ import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
 import { extractLocations, getEvents } from './api.js';
 import './App.css';
+import {InfoAlert} from  './components/AlertView/alert.jsx' ;
 
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
   const [allLocations, setAllLocations] = useState([]);
   const [currentCity, setCurrentCity] = useState('See All Cities');
   const [reducedLocations, setReducedLocations] = useState(true);
-
+  const [infoAlert, setInfoAlert] = useState('');
+  const [errorAlert, setErrorAlert] = useState('');
 
   useEffect(() => {
     console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
@@ -56,15 +58,22 @@ const App = () => {
 
   return (
     < div className='App' >
+      <div className="alertsContainer">
+        {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
+        {errorAlert.length ? <InfoAlert text={errorAlert} /> : null}
+      </div>
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={setCurrentCity}
-        setReducedLocations={setReducedLocations} />
+        setReducedLocations={setReducedLocations}
+        setInfoAlert ={setInfoAlert} />
       <NumberOfEvents
-        currentNOE={currentNOE}
-        setCurrentNOE={setCurrentNOE} />
+        // currentNOE={currentNOE}
+        setCurrentNOE={setCurrentNOE} 
+        setErrorAlert={setErrorAlert}/>
       <EventList
         events={events} />
+
     </div >
   )
 }
