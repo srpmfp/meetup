@@ -36,7 +36,7 @@ defineFeature(feature, test => {
         test('The user enters in a number of events, that amount is listed', ({ given, when, then }) => {
             let appComponent;
             let inputDom;
-            given('the user has selected the input', () => {
+            given('the user has selected the input', async () => {
                 const user = userEvent.setup()
                 appComponent = render(<App />);
                 const AppDom = appComponent.container.firstChild

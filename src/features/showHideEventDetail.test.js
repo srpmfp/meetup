@@ -32,7 +32,7 @@ defineFeature(feature, test => {
 
         then('they should see the details of the first event', async () => {
             const user = userEvent.setup()
-            await waitFor(() => {
+            await waitFor(async () => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
                 await user.click(within(firstEvent).getByText('Show Details'))
@@ -52,7 +52,7 @@ defineFeature(feature, test => {
             eventList = AppDom.querySelector('#event-list');
 
             const user = userEvent.setup()
-            waitFor( async() => {
+            waitFor(async  async () => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
                 await user.click(within(firstEvent).getByText('Show Details'))
@@ -60,9 +60,9 @@ defineFeature(feature, test => {
             })
         });
 
-        when('they click the "Hide Details" button for the first event',  () => {
+        when('they click the "Hide Details" button for the first event', () => {
             const user = userEvent.setup()
-            waitFor(async() => {
+            waitFor(async async() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const firstEvent = EventListItems[0]
                 await user.click(within(firstEvent).getByText('Hide Details'))
