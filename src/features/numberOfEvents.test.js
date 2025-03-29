@@ -25,7 +25,7 @@ defineFeature(feature, test => {
 
         then('32 events should be shown', () => {
             const eventList = AppComponent.container.querySelector('#event-list');
-            waitFor(() => {
+            waitFor(async() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const filteredEvents = EventListItems.slice(0, NOEdom.value)
                 expect(filteredEvents.length).toBe(32)
@@ -54,7 +54,7 @@ defineFeature(feature, test => {
 
             then('the number of events are shown', async () => {
                 const eventList = appComponent.container.querySelector('#event-list');
-                waitFor(() => {
+                waitFor(async() => {
                     const EventListItems = within(eventList).queryAllByRole('listitem')
                     expect(EventListItems).toBe(10)
                     // const filteredEvents = EventListItems.slice(0, inputDom.value)

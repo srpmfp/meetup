@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
+
+const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfoAlert }) => {
 
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [toggle, setToggle] = useState(false);
+
 
 
   useEffect(() => {
@@ -23,6 +25,17 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
       allLocations ? allLocations.filter((location) => {
         return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
       }) : [];
+
+
+      // if no city found in filter, show alert
+      let infoText;
+      if(filteredLocations.length === 0){
+        infoText = "No city found with that name";
+      }else{
+        infoText =""
+      }
+
+    setInfoAlert(infoText);
     setQuery(value);
     setSuggestions(filteredLocations);
 
@@ -33,12 +46,14 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations }) => {
     setQuery(value);
     setShowSuggestions(false);
     setCurrentCity(value);
+    setInfoAlert('');
   };
 
   const queryClear = () => {
     setCurrentCity('See All ')
     setQuery('')
     setShowSuggestions(false)
+    setInfoAlert('');
   }
 
   return (

@@ -49,6 +49,7 @@ describe('<CitySearch/> component', () => {
             setCurrentCity={() => { }}
             setCurrentNOE={() => { }}
             setReducedLocations={() => { }}
+            setInfoAlert={() => { }}
 
         />);
 
@@ -75,6 +76,7 @@ describe('<CitySearch/> component', () => {
             setCurrentCity={() => { }}
             setCurrentNOE={() => { }}
             setReducedLocations={() => { }}
+            setInfoAlert={() => { }}
 
         />);
 
@@ -103,6 +105,7 @@ describe('<CitySearch/> component', () => {
             setCurrentCity={() => { }}
             setCurrentNOE={() => { }}
             setReducedLocations={() => { }}
+            setInfoAlert={() => { }}
         />);
 
 
@@ -131,6 +134,7 @@ describe('<CitySearch/> component', () => {
             setCurrentCity={() => { }}
             setCurrentNOE={() => { }}
             setReducedLocations={() => { }}
+            setInfoAlert={() => { }}
         />);
 
 
