@@ -11,17 +11,18 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
     const handleInput = (event) => {
         const value = event.target.value;
-       
-       
+
+
         if (value <= 0) {
             setErrorAlert('Must display at least 1 event');
+            setCurrentCount(value);
         } else {
             setErrorAlert('');
             setCurrentNOE(parseInt(value));
             setCurrentCount(value);
         }
-      
-        
+
+
     }
 
     return (

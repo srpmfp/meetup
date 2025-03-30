@@ -100,10 +100,11 @@ input[type="number"] {
     border-radius: 30%;
     background-color: #364d4c;
 
-   
-    }
-         && button:hover {
-           background-color: #bcdcdb;
+
+  }
+
+  && button:hover {
+    background-color: #bcdcdb;
   }
 
 }
@@ -133,9 +134,21 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+  flex-grow: 1;
+  flex-basis: auto;
+  max-width: 25%;
 }
 
+.event:hover {
+  /* scale: 1.02; */
+  transform: scale(1.01);
+
+}
+
+
 #event-list {
+  display: flex;
+  flex-wrap: wrap;
   height: 50vh;
   max-height: 50%;
   overflow-y: auto;
@@ -143,6 +156,7 @@ input[type="number"] {
   scrollbar-width: thin;
   scroll-behavior: smooth;
 }
+
 .details-btn {
   position: absolute;
   right: 5px;
@@ -154,9 +168,7 @@ input[type="number"] {
 }
 
 .alerts-container {
-  position: fixed;
-  top: 0px;
-  left: 20px;
+  position: relative;
   width: 250px;
   z-index: 1000;
- }
+}

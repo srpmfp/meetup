@@ -27,13 +27,13 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfo
       }) : [];
 
 
-      // if no city found in filter, show alert
-      let infoText;
-      if(filteredLocations.length === 0){
-        infoText = "No city found with that name";
-      }else{
-        infoText =""
-      }
+    // if no city found in filter, show alert
+    let infoText;
+    if (filteredLocations.length === 0) {
+      infoText = "No city found with that name";
+    } else {
+      infoText = ""
+    }
 
     setInfoAlert(infoText);
     setQuery(value);
@@ -43,6 +43,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfo
 
   const handleItemClicked = (event) => {
     const value = event.target.textContent;
+
     setQuery(value);
     setShowSuggestions(false);
     setCurrentCity(value);
@@ -86,7 +87,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfo
               return <li role='event' onClick={handleItemClicked} key={suggestion}>{suggestion}</li>
             })
           }
-          <li key='See All Cities' onClick={() => { handleItemClicked, setReducedLocations(toggle); setToggle(!toggle) }}>
+          <li key='See All Cities' onClick={() => { handleItemClicked, setReducedLocations(toggle), setToggle(toggle) }}>
             {!toggle ? <b role="toggle">See All Cities</b> : <b role="toggle">Show Less</b>}
           </li>
         </ul>
