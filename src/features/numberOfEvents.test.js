@@ -25,7 +25,7 @@ defineFeature(feature, test => {
 
         then('32 events should be shown', () => {
             const eventList = AppComponent.container.querySelector('#event-list');
-            waitFor(async() => {
+            waitFor(async () => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const filteredEvents = EventListItems.slice(0, NOEdom.value)
                 expect(filteredEvents.length).toBe(32)
@@ -33,7 +33,7 @@ defineFeature(feature, test => {
         });
 
 
-        test('The user enters in a number of events, that amount is listed', ({ given, when, then }) => {
+        test('The user enters a new number into the input, the new number is shown', ({ given, when, then }) => {
             let appComponent;
             let inputDom;
             given('the user has selected the input', async () => {
@@ -45,16 +45,16 @@ defineFeature(feature, test => {
                 expect(inputDom.value).toBe('')
             });
 
-            when('they input the number of events', async () => {
+            when('they input a new number of events', async () => {
                 const user = userEvent.setup()
                 await user.type(inputDom, '10')
                 expect(inputDom.value).toBe('10')
 
             });
 
-            then('the number of events are shown', async () => {
+            then('the new number of events are shown', async () => {
                 const eventList = appComponent.container.querySelector('#event-list');
-                waitFor(async() => {
+                waitFor(async () => {
                     const EventListItems = within(eventList).queryAllByRole('listitem')
                     expect(EventListItems).toBe(10)
                     // const filteredEvents = EventListItems.slice(0, inputDom.value)

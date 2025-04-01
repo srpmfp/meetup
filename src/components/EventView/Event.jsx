@@ -33,7 +33,7 @@ const Event = ({ event }) => {
         <li className="event" id={data.summary}>
             {data.summary}<br />
             {data.location}<br />
-            {data.start.dateTime}
+            {sDate}
 
             <button className="details-btn" id={data.id} onClick={
                 revealDetails
