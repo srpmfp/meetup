@@ -18,7 +18,7 @@ const App = () => {
   const [warningAlert, setWarningAlert] = useState('');
 
   useEffect(() => {
-    if(navigator.online){
+    if(navigator.onLine){
       setWarningAlert('')
     }else {
       setWarningAlert('You are offline. Some features may not work as expected.');
