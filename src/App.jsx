@@ -31,6 +31,8 @@ const App = () => {
 
   //get event details
 
+
+
   const fetchData = async () => {
 
     try {
@@ -63,6 +65,7 @@ const App = () => {
       console.log("Failed to fetch data:", error);
     }
   };
+
 
   return (
     < div className='App' >
