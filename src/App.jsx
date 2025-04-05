@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CitySearch from './components/CitySearchView/CitySearch.jsx';
 import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
+import CityEventsChart from './components/CityEventsChart/CityEventsChart.jsx';
 import { extractLocations, getEvents } from './api.js';
 import './App.css';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/AlertView/alert.jsx';
@@ -18,9 +19,9 @@ const App = () => {
   const [warningAlert, setWarningAlert] = useState('');
 
   useEffect(() => {
-    if(navigator.onLine){
+    if (navigator.onLine) {
       setWarningAlert('')
-    }else {
+    } else {
       setWarningAlert('You are offline. Some features may not work as expected.');
     }
     setTimeout(() => {
