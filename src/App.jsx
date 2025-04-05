@@ -83,6 +83,7 @@ const App = () => {
         // currentNOE={currentNOE}
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
+      <CityEventsChart allLocations={allLocations} events={events} />
       <EventList
         events={events} />
 
