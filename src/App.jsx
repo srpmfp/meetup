@@ -4,8 +4,7 @@ import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
 import { extractLocations, getEvents } from './api.js';
 import './App.css';
-import { InfoAlert, ErrorAlert } from './components/AlertView/alert.jsx';
-import CityEventsChart from './components/CityEventsChart/CityEventsChart.jsx';
+import { InfoAlert, ErrorAlert, WarningAlert } from './components/AlertView/alert.jsx';
 
 
 const App = () => {
@@ -16,8 +15,14 @@ const App = () => {
   const [reducedLocations, setReducedLocations] = useState(true);
   const [infoAlert, setInfoAlert] = useState('');
   const [errorAlert, setErrorAlert] = useState('');
+  const [warningAlert, setWarningAlert] = useState('');
 
   useEffect(() => {
+    if(navigator.onLine){
+      setWarningAlert('')
+    }else {
+      setWarningAlert('You are offline. Some features may not work as expected.');
+    }
     setTimeout(() => {
       console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
       fetchData();
@@ -25,6 +30,8 @@ const App = () => {
   }, [currentCity, currentNOE, reducedLocations]);
 
   //get event details
+
+
 
   const fetchData = async () => {
 
@@ -59,11 +66,13 @@ const App = () => {
     }
   };
 
+
   return (
     < div className='App' >
       <div className="alertsContainer">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
       <CitySearch
         allLocations={allLocations}
