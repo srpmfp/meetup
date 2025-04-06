@@ -27,7 +27,7 @@ defineFeature(feature, test => {
             NOEdom = AppDom.querySelector('#eventCount')
             const eventList = AppDom.querySelector('#event-list');
 
-            await waitFor(() => {
+            await waitFor(async() => {
                 const EventListItems = within(eventList).queryAllByRole('listitem')
                 const filteredEvents = EventListItems.slice(0, NOEdom.value)
                 expect(filteredEvents.length).toBe(32)
@@ -54,8 +54,8 @@ defineFeature(feature, test => {
 
         then('they should see a list of city suggestions', async () => {
             //assertion code
-            await waitFor(() => {
-                const suggestionListItems = within(CitySearch).queryAllByRole('event');
+            await waitFor(async() => {
+                const suggestionListItems = within(CitySearch).queryAllByText('Berlin, Germany');
                 expect(suggestionListItems).toHaveLength(1); // separate role made for events that separates from ListItems
             })
         });
@@ -81,9 +81,9 @@ defineFeature(feature, test => {
 
         });
         let suggestionList;
-        and('the suggested cities are shown', () => {
-            suggestionList = within(CitySearch).queryAllByRole('event')
-            expect(suggestionList).toHaveLength(1)
+        and('the suggested cities are shown', async () => {
+            suggestionList = within(CitySearch).queryAllByRole('listitem')
+            expect(suggestionList).toHaveLength(3)
 
         });
 
@@ -101,7 +101,7 @@ defineFeature(feature, test => {
         and('the user should receive events corresponding to the selected city', async () => {
             const eventList = AppDom.querySelector('#event-list')
             NOEdom = AppDom.querySelector('#eventCount')
-            const EventListItems = within(eventList).queryAllByRole('listitem')
+            suggestionList = within(eventList).queryAllByRole('listitem')
             const eventLocations = EventListItems.map(event => within(event).queryByText(
                 'Berlin, Germany'
             ))

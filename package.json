@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "atatus-spa": "^4.6.4",
+    "bootstrap": "^5.3.5",
     "jest": "^29.7.0",
     "nprogress": "^0.2.0",
     "react": "^19.0.0",
+    "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
     "recharts": "^2.15.1",
     "vite-plugin-pwa": "^1.0.0",

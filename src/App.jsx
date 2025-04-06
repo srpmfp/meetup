@@ -3,6 +3,7 @@ import CitySearch from './components/CitySearchView/CitySearch.jsx';
 import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
 import CityEventsChart from './components/CityEventsChart/CityEventsChart.jsx';
+import EventGenreChart from './components/EventGenreView/EventGenreChart.jsx';
 import { extractLocations, getEvents } from './api.js';
 import './App.css';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/AlertView/alert.jsx';
@@ -58,7 +59,7 @@ const App = () => {
       if (reducedLocations) {
         setAllLocations(extractLocations(allEvents).slice(0, 3));
         return;
-      } else {
+      } if (!reducedLocations) {
         setAllLocations(extractLocations(allEvents));
         return;
       }
@@ -84,7 +85,10 @@ const App = () => {
         // currentNOE={currentNOE}
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
-      <CityEventsChart allLocations={allLocations} events={events} />
+      <div className="chartsContainer">
+        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} reducedLocations={reducedLocations} />
+        <EventGenreChart role="charts-container" allLocations={allLocations} events={events} />
+      </div>
       <EventList
         events={events} />
 
