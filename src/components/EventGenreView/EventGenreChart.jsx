@@ -1,5 +1,6 @@
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from 'recharts';
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
 
 const EventGenreChart = ({ events }) => {
@@ -84,5 +85,9 @@ const EventGenreChart = ({ events }) => {
             </PieChart>
         </ResponsiveContainer>
     );
+};
+
+EventGenreChart.propTypes = {
+    events: PropTypes.array.isRequired,
 };
 export default EventGenreChart;

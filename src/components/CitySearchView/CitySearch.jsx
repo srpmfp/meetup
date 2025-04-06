@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 
 const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfoAlert }) => {
@@ -98,6 +99,12 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfo
   )
 }
 
+CitySearch.propTypes = {
+  allLocations: PropTypes.array.isRequired,
+  setCurrentCity: PropTypes.func.isRequired,
+  setReducedLocastions: PropTypes.func.isRequired,
+  setInfoAlert: PropTypes.func.isRequired,
+};
 
 
 export default CitySearch;

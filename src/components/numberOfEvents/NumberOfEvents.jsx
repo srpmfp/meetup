@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
@@ -35,5 +36,8 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     )
 
 }
-
+NumberOfEvents.propTypes = {
+    setCurrentNOE: PropTypes.func.isRequired,
+    setErrorAlert: PropTypes.func.isRequired,
+};
 export default NumberOfEvents;

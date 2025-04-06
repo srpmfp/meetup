@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Container } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import {
 
@@ -59,4 +59,8 @@ const CityEventsChart = ({ allLocations, events }) => {
     )
 }
 
+CityEventsChart.propTypes = {
+    allLocations: PropTypes.array.isRequired,
+    events: PropTypes.array.isRequired,
+};
 export default CityEventsChart;

@@ -5,9 +5,14 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
-  
+
   {
-    ignores: ['dist', 'auth-server/handler.js'],
+    ignores: ['dist', 'auth-server/handler.js', '_tests_'],
+  },
+  {
+    "env": {
+      "jest": true
+    }
   },
   {
     files: ['**/*.{js,jsx}'],
@@ -31,6 +36,8 @@ export default [
       ...react.configs.recommended.rules,
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
       'react/jsx-no-target-blank': 'off',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     },
