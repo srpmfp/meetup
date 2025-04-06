@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 
 const Event = ({ event }) => {
@@ -42,5 +43,18 @@ const Event = ({ event }) => {
             {eventDetails()}
         </li>)
 }
-
+Event.propTypes = {
+    event: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        summary: PropTypes.string.isRequired,
+        location: PropTypes.string.isRequired,
+        start: PropTypes.shape({
+            dateTime: PropTypes.string.isRequired,
+        }).isRequired,
+        end: PropTypes.shape({
+            dateTime: PropTypes.string.isRequired,
+        }).isRequired,
+        description: PropTypes.string,
+    }).isRequired,
+};
 export default Event;
