@@ -34,7 +34,7 @@ test('renders a list of 32 events', async ()=>{
 
     const EventListDom = AppDom.querySelector('#event-list');
     await waitFor(() => {
-        const EventListItems = within(EventListDom).queryAllByRole('listitem');
+        const EventListItems = within(EventListDom).queryByRole('listitem');
         expect(EventListItems).toHaveLength(32); //ensures the textbox has a default value of 32
     })
 })

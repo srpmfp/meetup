@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Scatter, ScatterChart, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Row, Col, Container } from 'react-bootstrap';
+
+import {
+
+    Scatter,
+    ScatterChart,
+    XAxis, YAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer
+} from 'recharts';
+
 
 const CityEventsChart = ({ allLocations, events }) => {
     const [data, setData] = useState([]);
@@ -21,9 +32,15 @@ const CityEventsChart = ({ allLocations, events }) => {
         })
         return data;
     };
+
     return (
+
+
         <ResponsiveContainer width="99%" height={400}>
+
             <ScatterChart
+                width={584}
+                height={200}
                 margin={{
                     top: 20,
                     right: 20,
@@ -34,11 +51,12 @@ const CityEventsChart = ({ allLocations, events }) => {
                 <XAxis type="category" dataKey="city" name="City" />
                 <YAxis type="number" dataKey="count" name="Number of Events" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="A school" data={data} fill="#8884d8" />
+                <Scatter name="Number of Events" data={data} fill="#8884d8" />
             </ScatterChart>
         </ResponsiveContainer>
-    );
 
+
+    )
 }
 
 export default CityEventsChart;

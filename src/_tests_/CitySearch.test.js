@@ -50,6 +50,8 @@ describe('<CitySearch/> component', () => {
             setCurrentNOE={() => { }}
             setReducedLocations={() => { }}
             setInfoAlert={() => { }}
+            setWarningAlert={() => { }}
+            setErrorAlert={() => { }}
 
         />);
 
@@ -185,7 +187,9 @@ describe('city search integration', () => {
 
         const eventListDom = AppDom.querySelector('#event-list');
         const suggestionListItems = within(eventListDom).queryAllByRole('listitem');
+        setTimeout(() => {
+            expect(suggestionListItems.length).toBe(allEvents.slice(0, NOEDom.value).length);
+        }, 1000);
 
-        expect(suggestionListItems.length).toBe(allEvents.slice(0, NOEDom.value).length);
-    });
+    })
 })

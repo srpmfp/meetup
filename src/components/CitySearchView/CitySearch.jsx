@@ -15,6 +15,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfo
     setQuery('')
     setToggle(!toggle)
 
+
   }, [`${allLocations}`, setCurrentCity, setReducedLocations]);
 
   //filter locations based on user input
@@ -51,7 +52,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setReducedLocations, setInfo
   };
 
   const queryClear = () => {
-    setCurrentCity('See All ')
+    setCurrentCity('See All Cities')
     setQuery('')
     setShowSuggestions(false)
     setInfoAlert('');
