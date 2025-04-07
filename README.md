@@ -20,3 +20,15 @@ Meetup is an app to help connect people to the events they want to go to.
 5| <span style="color: lightBlue;"> offline events access| an event has been viewed or will be attended| the user has previously expanded or saved and event| then the event will be locally stored
 6| <span style="color: lightBlue;">Home Screen Access | the user is on their home screen |  the user selects the app icon| they should be directed to the list of events
 7| <span style ="color: lightBlue;"> Chart of up coming events| when looking through a list of all the events| the user selects to a chart icon| a list most recent and proximal events are displayed 
+
+## Wish List
+
+If given more time to complete this there are basic quality of life additions:
+
+- event listener for clicks away from elements
+- save and add events to google calendar
+- clicking "See All Cities" would update the amount of locations in charts
+- padding between the text in the pie chart
+- filtering by soonest and nearest
+- a calendar layout for more precise date comparison
+

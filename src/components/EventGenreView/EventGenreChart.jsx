@@ -45,12 +45,15 @@ const EventGenreChart = ({ events }) => {
                 y={y}
                 fill='white'
                 textAnchor={x > cx ? 'start' : 'end'}
-                dominantBaseline='central'>
+                dominantBaseline='central'
+                verticalAnchor='start'
+
+            >
                 {data[index].value == 0 ? "" : `${data[index].name}`}
                 {"  "}
                 {data[index].value == 0 ? "" : `${(percent * 100).toFixed(0)}%`}
 
-            </text>
+            </text >
         );
     };
     return (
@@ -68,7 +71,7 @@ const EventGenreChart = ({ events }) => {
                     labelLine={false}
                     label={renderCustomizedLabel}
                     nameKey='name'
-                    outerRadius={80}
+                    outerRadius={40}
                     fill='#8884d8'
                     dataKey='value'>
                     {data.map((entry, index) => (
@@ -79,8 +82,8 @@ const EventGenreChart = ({ events }) => {
                     ))}
                 </Pie>
                 <Legend
-                    verticalAlign='top'
-                    height={36}
+                    verticalAlign='bottom'
+                    height={100}
                 />
             </PieChart>
         </ResponsiveContainer>

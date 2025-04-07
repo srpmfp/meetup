@@ -36,11 +36,11 @@ const CityEventsChart = ({ allLocations, events }) => {
     return (
 
 
-        <ResponsiveContainer width="99%" height={400}>
+        <ResponsiveContainer width="99%" height={350}>
 
             <ScatterChart
-                width={584}
-                height={200}
+                width={1000}
+                height={350}
                 margin={{
                     top: 20,
                     right: 20,
@@ -51,7 +51,7 @@ const CityEventsChart = ({ allLocations, events }) => {
                 <XAxis type="category" dataKey="city" name="City" />
                 <YAxis type="number" dataKey="count" name="Number of Events" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="Number of Events" data={data} fill="#8884d8" />
+                <Scatter name="Number of Events" data={data} fill="#7ac977" />
             </ScatterChart>
         </ResponsiveContainer>
 

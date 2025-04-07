@@ -4,37 +4,37 @@ import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
 import CityEventsChart from './components/CityEventsChart/CityEventsChart.jsx';
 import EventGenreChart from './components/EventGenreView/EventGenreChart.jsx';
+import IconLogo from './assets/IconLogo.jsx';
 import { extractLocations, getEvents } from './api.js';
 import './App.css';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/AlertView/alert.jsx';
 
 
 const App = () => {
-  const [events, setEvents] = useState([]);
-  const [currentNOE, setCurrentNOE] = useState(32);
-  const [allLocations, setAllLocations] = useState([]);
-  const [currentCity, setCurrentCity] = useState('See All Cities');
-  const [reducedLocations, setReducedLocations] = useState(true);
-  const [infoAlert, setInfoAlert] = useState('');
-  const [errorAlert, setErrorAlert] = useState('');
-  const [warningAlert, setWarningAlert] = useState('');
+  const [events, setEvents] = useState([]); // event array
+  const [currentNOE, setCurrentNOE] = useState(32); // event count
+  const [allLocations, setAllLocations] = useState([]); // location array
+  const [currentCity, setCurrentCity] = useState('See All Cities'); // default city to show all events
+  const [reducedLocations, setReducedLocations] = useState(true); // state for 'see all cities' : 'see less cities' '
+  const [infoAlert, setInfoAlert] = useState(''); // state for no city found
+  const [errorAlert, setErrorAlert] = useState(''); // state for less than 1 event
+  const [warningAlert, setWarningAlert] = useState(''); // state for offline warning
 
   useEffect(() => {
+    // Check if the user is online or offline
     if (navigator.onLine) {
       setWarningAlert('')
     } else {
       setWarningAlert('You are offline. Some features may not work as expected.');
     }
+    //debounce the fetchData function to avoid multiple calls
     setTimeout(() => {
       console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
       fetchData();
-    }, 1000);
+    }, 2000);
   }, [currentCity, currentNOE, reducedLocations]);
 
   //get event details
-
-
-
   const fetchData = async () => {
 
     try {
@@ -45,10 +45,11 @@ const App = () => {
       }
 
       const filteredEvents =
-        currentCity === 'See All Cities'
+        currentCity === 'See All Cities' //defailt true
           ? allEvents
-          : allEvents.filter(event => event.location === currentCity);
+          : allEvents.filter(event => event.location === currentCity);// filter by location
 
+      //error handling
       if (!filteredEvents.length) {
         console.log("No filtered events found, showing all events");
         setEvents(allEvents.slice(0, parseInt(currentNOE)));
@@ -71,6 +72,15 @@ const App = () => {
 
   return (
     < div className='App' >
+      <div className="headerContainer">
+        <IconLogo />
+        <div className="logoCont">
+          <h1>MeetUp</h1>
+          <h4>Find your next MeetUp</h4>
+        </div>
+        <div></div>
+
+      </div>
       <div className="alertsContainer">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
