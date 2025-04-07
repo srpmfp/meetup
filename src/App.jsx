@@ -31,7 +31,7 @@ const App = () => {
     setTimeout(() => {
       console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
       fetchData();
-    }, 1000);
+    }, 2000);
   }, [currentCity, currentNOE, reducedLocations]);
 
   //get event details
