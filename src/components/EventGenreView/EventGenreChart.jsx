@@ -45,12 +45,15 @@ const EventGenreChart = ({ events }) => {
                 y={y}
                 fill='white'
                 textAnchor={x > cx ? 'start' : 'end'}
-                dominantBaseline='central'>
+                dominantBaseline='central'
+                verticalAnchor='start'
+
+            >
                 {data[index].value == 0 ? "" : `${data[index].name}`}
                 {"  "}
                 {data[index].value == 0 ? "" : `${(percent * 100).toFixed(0)}%`}
 
-            </text>
+            </text >
         );
     };
     return (

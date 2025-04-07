@@ -74,7 +74,12 @@ const App = () => {
     < div className='App' >
       <div className="headerContainer">
         <IconLogo />
-        <h1>Events Around the World</h1>
+        <div className="logoCont">
+          <h1>MeetUp</h1>
+          <h4>Find your next MeetUp</h4>
+        </div>
+        <div></div>
+
       </div>
       <div className="alertsContainer">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}

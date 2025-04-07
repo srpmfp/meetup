@@ -16,7 +16,19 @@ h1 {
 .headerContainer {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  justify-content: center;
+}
+
+.logoCont {
+  >h1 {
+    padding: 0;
+    margin: 0;
+  }
+
+  >h4 {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .chartsContainer {
@@ -24,6 +36,8 @@ h1 {
   grid-template-columns: auto auto;
   background: linear-gradient(#14281D, #3d3d3d);
   border-radius: 3em;
+
+
 }
 
 @media (max-width: 950px) {
