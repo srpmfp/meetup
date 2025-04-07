@@ -68,7 +68,7 @@ const EventGenreChart = ({ events }) => {
                     labelLine={false}
                     label={renderCustomizedLabel}
                     nameKey='name'
-                    outerRadius={80}
+                    outerRadius={40}
                     fill='#8884d8'
                     dataKey='value'>
                     {data.map((entry, index) => (
@@ -79,8 +79,8 @@ const EventGenreChart = ({ events }) => {
                     ))}
                 </Pie>
                 <Legend
-                    verticalAlign='top'
-                    height={36}
+                    verticalAlign='bottom'
+                    height={100}
                 />
             </PieChart>
         </ResponsiveContainer>

@@ -4,6 +4,7 @@ import EventList from './components/EventListView/EventList.jsx';
 import NumberOfEvents from './components/numberOfEvents/NumberOfEvents.jsx';
 import CityEventsChart from './components/CityEventsChart/CityEventsChart.jsx';
 import EventGenreChart from './components/EventGenreView/EventGenreChart.jsx';
+import IconLogo from './assets/IconLogo.jsx';
 import { extractLocations, getEvents } from './api.js';
 import './App.css';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/AlertView/alert.jsx';
@@ -71,6 +72,10 @@ const App = () => {
 
   return (
     < div className='App' >
+      <div className="headerContainer">
+        <IconLogo />
+        <h1>Events Around the World</h1>
+      </div>
       <div className="alertsContainer">
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
