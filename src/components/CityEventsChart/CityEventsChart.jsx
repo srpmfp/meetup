@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -18,8 +18,7 @@ const CityEventsChart = ({ allLocations, events }) => {
     useEffect(() => {
         setTimeout(() => {
             setData(getData())
-            console.log(data)
-        }, 1000);
+        }, 1500);
     },
         [`${events}`]);
 
@@ -27,11 +26,27 @@ const CityEventsChart = ({ allLocations, events }) => {
         // counts the number of events in each city
         const data = allLocations.map((location) => {
             const count = events.filter((event) => event.location === location).length;
-            const city = location.split(', ')[0];
-            return { city, count };
+            const city = location.split(', ')[0].substring(0, 3);
+
+
+            return { count, city };
         })
-        return data;
+        const filteredData = data.filter((location => location.count > 0));
+        return filteredData;
     };
+    class CustomizedAxisTick extends PureComponent {
+        render() {
+            const { x, y, payload } = this.props;
+
+            return (
+                <g transform={`translate(${x},${y})`}>
+                    <text x={0} y={0} dy={-4} textAnchor="end" fontSize={16} padding="no-gap" fill="#ffffff" transform="rotate(-90)">
+                        {payload.value}
+                    </text>
+                </g>
+            );
+        }
+    }
 
     return (
 
@@ -43,15 +58,15 @@ const CityEventsChart = ({ allLocations, events }) => {
                 height={350}
                 margin={{
                     top: 20,
-                    right: 20,
-                    bottom: 20,
-                    left: 20,
+                    right: 50,
+                    bottom: 50,
+
                 }}>
                 <CartesianGrid />
-                <XAxis type="category" dataKey="city" name="City" />
-                <YAxis type="number" dataKey="count" name="Number of Events" />
+                <XAxis type="category" dataKey="city" orientation="bottom" padding="no-gap" interval="equidistantPreserveStartEnd" tick={<CustomizedAxisTick />} name="City" />
+                <YAxis type="number" dataKey="count" name="Number of Events" tick={<CustomizedAxisTick />} />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="Number of Events" data={data} fill="#7ac977" />
+                <Scatter name="Number of Events" data={data} fill="#ffffff" />
             </ScatterChart>
         </ResponsiveContainer>
 

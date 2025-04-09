@@ -10,7 +10,7 @@ const EventGenreChart = ({ events }) => {
         setTimeout(() => {
             setData(getData());
             console.log(data);
-        }, 1500);
+        }, 2000);
     }, [`${events}`]);
 
     const getData = () => {

@@ -20,6 +20,7 @@ const App = () => {
   const [errorAlert, setErrorAlert] = useState(''); // state for less than 1 event
   const [warningAlert, setWarningAlert] = useState(''); // state for offline warning
 
+
   useEffect(() => {
     // Check if the user is online or offline
     if (navigator.onLine) {
@@ -31,7 +32,7 @@ const App = () => {
     setTimeout(() => {
       console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
       fetchData();
-    }, 2000);
+    }, 500);
   }, [currentCity, currentNOE, reducedLocations]);
 
   //get event details
@@ -45,25 +46,19 @@ const App = () => {
       }
 
       const filteredEvents =
-        currentCity === 'See All Cities' //defailt true
-          ? allEvents
-          : allEvents.filter(event => event.location === currentCity);// filter by location
+        currentCity === 'See All Cities' //default true
+          ? allEvents // show all even
+          : allEvents.filter(event => event.location === currentCity).slice(0, parseInt(currentNOE));// filter by location
+
 
       //error handling
       if (!filteredEvents.length) {
         console.log("No filtered events found, showing all events");
         setEvents(allEvents.slice(0, parseInt(currentNOE)));
       } else {
-        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
+        setEvents(filteredEvents);
       }
-
-      if (reducedLocations) {
-        setAllLocations(extractLocations(allEvents).slice(0, 3));
-        return;
-      } if (!reducedLocations) {
-        setAllLocations(extractLocations(allEvents));
-        return;
-      }
+      setAllLocations(extractLocations(allEvents)); // get all locations from events
     } catch (error) {
       console.log("Failed to fetch data:", error);
     }
@@ -89,18 +84,20 @@ const App = () => {
       <CitySearch
         allLocations={allLocations}
         setCurrentCity={setCurrentCity}
+        setAllLocations={setAllLocations}
         setReducedLocations={setReducedLocations}
+        reducedLocation={reducedLocations}
+        currentCity={currentCity}
         setInfoAlert={setInfoAlert} />
       <NumberOfEvents
-        // currentNOE={currentNOE}
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
       <div className="chartsContainer">
-        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} reducedLocations={reducedLocations} />
+        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} />
         <EventGenreChart role="charts-container" allLocations={allLocations} events={events} />
       </div>
       <EventList
-        events={events} />
+        events={events} currentNOE={currentNOE} />
 
     </div >
   )
