@@ -30,7 +30,6 @@ const App = () => {
     }
     //debounce the fetchData function to avoid multiple calls
     setTimeout(() => {
-      console.log("Fetching data with:", { currentCity, currentNOE, reducedLocations });
       fetchData();
     }, 500);
   }, [currentCity, currentNOE, reducedLocations]);
@@ -47,20 +46,21 @@ const App = () => {
 
       const filteredEvents =
         currentCity === 'See All Cities' //default true
-          ? allEvents // show all even
-          : allEvents.filter(event => event.location === currentCity).slice(0, parseInt(currentNOE));// filter by location
+          ? allEvents // show all event
+          : allEvents.filter(event => event.location === currentCity)// filter by location
 
 
       //error handling
       if (!filteredEvents.length) {
-        console.log("No filtered events found, showing all events");
         setEvents(allEvents.slice(0, parseInt(currentNOE)));
+      } if (currentCity === 'See All Cities') {
+        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
       } else {
-        setEvents(filteredEvents);
+
+        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
       }
       setAllLocations(extractLocations(allEvents)); // get all locations from events
     } catch (error) {
-      console.log("Failed to fetch data:", error);
     }
   };
 
@@ -93,8 +93,8 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
       <div className="chartsContainer">
-        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} />
         <EventGenreChart role="charts-container" allLocations={allLocations} events={events} />
+        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} />
       </div>
       <EventList
         events={events} currentNOE={currentNOE} />

@@ -76,7 +76,7 @@ const CitySearch = ({
           {query === '' ? null : (
             <div className='query'>
               <div className='query-text'>{query}</div>
-              <button onClick={queryClear}>X</button>
+              <button className='seeAllBtn' onClick={queryClear}>See All Cities</button>
             </div>
           )}
           {currentCity === 'See All Cities' && toggle
@@ -113,7 +113,7 @@ const CitySearch = ({
                   </li>
                 );
               }) : null}
-          <li
+          {/* <li
             key='See All Cities'
             onClick={() => {
               handleItemClicked, setReducedLocations(toggle);
@@ -135,7 +135,7 @@ const CitySearch = ({
                 Show Less
               </button>
             )}
-          </li>
+          </li> */}
         </ul>
       ) : null}
     </div>

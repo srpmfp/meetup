@@ -35,18 +35,19 @@ const EventGenreChart = ({ events }) => {
         percent,
         index,
     }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 1.2;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const radius = innerRadius + (outerRadius - innerRadius) * 1.4;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN)
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
         return (
             <text
                 x={x}
                 y={y}
+                fontSize={12}
                 fill='white'
                 textAnchor={x > cx ? 'start' : 'end'}
                 dominantBaseline='central'
-                verticalAnchor='start'
+
 
             >
                 {data[index].value == 0 ? "" : `${data[index].name}`}
@@ -71,7 +72,7 @@ const EventGenreChart = ({ events }) => {
                     labelLine={false}
                     label={renderCustomizedLabel}
                     nameKey='name'
-                    outerRadius={80}
+                    outerRadius={50}
                     fill='#8884d8'
                     dataKey='value'>
                     {data.map((entry, index) => (
