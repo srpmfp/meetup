@@ -48,16 +48,11 @@ const App = () => {
         currentCity === 'See All Cities' //default true
           ? allEvents // show all event
           : allEvents.filter(event => event.location === currentCity)// filter by location
-
+      setEvents(filteredEvents);
 
       //error handling
       if (!filteredEvents.length) {
-        setEvents(allEvents.slice(0, parseInt(currentNOE)));
-      } if (currentCity === 'See All Cities') {
-        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
-      } else {
-
-        setEvents(filteredEvents.slice(0, parseInt(currentNOE)));
+        setEvents(allEvents);
       }
       setAllLocations(extractLocations(allEvents)); // get all locations from events
     } catch (error) {
@@ -93,8 +88,8 @@ const App = () => {
         setCurrentNOE={setCurrentNOE}
         setErrorAlert={setErrorAlert} />
       <div className="chartsContainer">
-        <EventGenreChart role="charts-container" allLocations={allLocations} events={events} />
-        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} />
+        <EventGenreChart role="charts-container" allLocations={allLocations} events={events} currentNOE={currentNOE} />
+        <CityEventsChart role="charts-container" allLocations={allLocations} events={events} currentNOE={currentNOE} />
       </div>
       <EventList
         events={events} currentNOE={currentNOE} />

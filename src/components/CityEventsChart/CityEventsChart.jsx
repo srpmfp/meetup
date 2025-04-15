@@ -11,25 +11,26 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 
-const CityEventsChart = ({ allLocations, events }) => {
+const CityEventsChart = ({ allLocations, events, currentNOE }) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
             setData(getData());
         }, 1500);
-    }, [`${events}`]);
+    }, [`${events}`, currentNOE]);
 
     const getData = () => {
         // counts the number of events in each city
         const data = allLocations.map((location) => {
-            const count = events.filter((event) => event.location === location).length;
+            const eSlice = events.slice(0, currentNOE);
+            const count = eSlice.filter((event) => event.location === location).length;
             const city = location.split(', ')[0];
 
             return { count, city };
         });
         // const filteredData = data.filter((location) => location.count > 0);
-        return data;
+        return data
     };
     class CustomizedAxisTick extends PureComponent {
 
