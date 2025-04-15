@@ -35,7 +35,7 @@ const EventGenreChart = ({ events }) => {
         percent,
         index,
     }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 1.4;
+        const radius = innerRadius + (outerRadius - innerRadius) * 1.6;
         const x = cx + radius * Math.cos(-midAngle * RADIAN)
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -63,16 +63,16 @@ const EventGenreChart = ({ events }) => {
             height={400}
         >
             <PieChart
-                width={400}
-                height={400}>
+                width={500}
+                height={500}>
                 <Pie
                     data={data}
-                    cx='50%'
+                    cx='60%'
                     cy='50%'
                     labelLine={false}
                     label={renderCustomizedLabel}
                     nameKey='name'
-                    outerRadius={50}
+                    outerRadius={25}
                     fill='#8884d8'
                     dataKey='value'>
                     {data.map((entry, index) => (
