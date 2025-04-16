@@ -79,6 +79,7 @@ const CityEventsChart = ({ allLocations, events, currentNOE }) => {
                 <YAxis
                     type='number'
                     dataKey='count'
+                    allowDecimals={false}
                     name='Number of Events'
                     tick={<CustomizedAxisTick />}
                 />
