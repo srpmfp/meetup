@@ -32,3 +32,7 @@ If given more time to complete this there are basic quality of life additions:
 - filtering by soonest and nearest
 - a calendar layout for more precise date comparison
 
+### Project Takeaways
+This project highlighted a test driven development mindset. It was a more facilitated approach from the course perspective but it really highlihgted the importance of  understanding
+the User stories. It also showed a difference side of development which is testing and ensuring the least amount of code is being used to create the desired results. It also gave language ot the metrics being 
+captured with Cumulative layout shift, Interactions to Next Pain, etc, to ensure the smoothest and most responsive webapp attainable.
